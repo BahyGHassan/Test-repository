@@ -4,12 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bahy & Basma's Wedding</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Great+Vibes&family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Great+Vibes&family=Montserrat:wght@300&display=swap" rel="stylesheet">
     <style>
         body {
             margin: 0;
             padding: 0;
-            /* Mosque background image */
             background: #f4f1ea url('background.jpg') no-repeat center center fixed;
             background-size: cover;
             min-height: 100vh;
@@ -17,108 +16,125 @@
             justify-content: center;
             align-items: center;
             font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+        }
+
+        @media (min-width: 1200px) {
+            body { background-image: none; background-color: #f4f1ea; }
         }
 
         .main-container {
             width: 100%;
             display: flex;
             justify-content: center;
-            padding: 20px;
+            padding: 40px 15px; /* Extra padding for small screens */
             box-sizing: border-box;
         }
 
-        /* The Ornate Frame (image_c7385c.png) */
-        .invitation-card {
+        .container {
             position: relative;
             width: 100%;
-            max-width: 500px;
-            aspect-ratio: 1 / 1.4; 
-            background: url('image_c7385c.png') no-repeat center center;
-            background-size: contain;
+            max-width: 450px;
+            /* Dynamic aspect ratio: taller on mobile to prevent text overflow */
+            aspect-ratio: 1 / 1.5; 
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            /* Adds a lift effect over the mosque background */
-            filter: drop-shadow(0 15px 30px rgba(0,0,0,0.3));
+            text-align: center;
         }
 
-        /* Content area centered specifically within the white arch */
+        .arch-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 1;
+            /* Combined Shape and Border SVG */
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 140' preserveAspectRatio='none'%3E%3Cpath d='M50 0 C55 10 70 10 85 20 C100 30 100 50 100 70 C100 90 100 110 85 120 C70 130 55 130 50 140 C45 130 30 130 15 120 C0 110 0 90 0 70 C0 50 0 30 15 20 C30 10 45 10 50 0 Z' fill='rgba(252, 250, 247, 0.98)' /%3E%3Cpath d='M50 3 C54 12 68 12 82 22 C96 32 97 50 97 70 C97 90 96 108 82 118 C68 128 54 128 50 137 C46 128 32 128 18 118 C4 108 3 90 3 70 C3 50 4 32 18 22 C32 12 46 12 50 3 Z' fill='none' stroke='%23d4af37' stroke-width='0.8' /%3E%3C/svg%3E");
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+        }
+
         .content {
             position: relative;
-            width: 62%; 
-            margin-top: 12%; 
-            text-align: center;
             z-index: 2;
+            width: 80%; /* Keeps text well away from the arch curves */
+            padding: 20px 0;
         }
 
+        /* FLUID TYPOGRAPHY: Sizes scale with viewport width (vw) */
         .header-text {
             font-family: 'Cinzel', serif;
-            letter-spacing: 0.2em;
-            font-size: clamp(0.55rem, 2vw, 0.75rem);
-            color: #7a634a;
+            letter-spacing: 0.3em;
+            font-size: clamp(0.6rem, 2.5vw, 0.8rem);
+            color: #888;
             text-transform: uppercase;
             margin-bottom: 0.5em;
         }
 
         .names {
             font-family: 'Great Vibes', cursive;
-            font-size: clamp(1.8rem, 8vw, 2.8rem);
-            color: #9e7a2e;
+            font-size: clamp(2.2rem, 10vw, 3.5rem);
+            color: #d4af37;
             margin: 0.2em 0;
             line-height: 1.1;
         }
 
         .symbol { 
-            color: #9e7a2e; 
-            font-size: 1.2rem; 
-            margin: 0.3em 0; 
+            color: #d4af37; 
+            font-size: clamp(1rem, 4vw, 1.3rem); 
+            margin: 0.5em 0; 
         }
 
         .details {
-            font-size: clamp(0.6rem, 2.2vw, 0.75rem);
-            line-height: 1.5;
-            color: #333;
-            margin: 0.5em 0;
+            font-size: clamp(0.65rem, 2.8vw, 0.85rem);
+            line-height: 1.6;
+            color: #4a4a4a;
+            margin: 0.8em 0;
         }
 
         .date-section {
-            border-top: 1px solid #9e7a2e;
-            border-bottom: 1px solid #9e7a2e;
-            padding: 0.4em 0;
-            margin: 0.8em auto;
-            width: 80%;
-            font-weight: 600;
-            font-size: clamp(0.7rem, 3vw, 0.9rem);
-            color: #000;
-            letter-spacing: 0.1em;
+            border-top: 1px solid #d4af37;
+            border-bottom: 1px solid #d4af37;
+            padding: 0.6em 0;
+            margin: 1.2em auto;
+            width: 85%;
+            font-weight: bold;
+            font-size: clamp(0.8rem, 3.5vw, 1.1rem);
+            color: #333;
+            letter-spacing: 0.15em;
         }
 
         .rsvp-btn {
             display: inline-block;
-            margin-top: 1em;
-            padding: 0.8em 2em;
-            background-color: #9e7a2e; 
+            margin-top: 1.5em;
+            padding: 1em 2.5em;
+            background-color: #c9a742; 
             color: white;
             text-decoration: none;
             font-family: 'Cinzel', serif;
             font-weight: 700;
-            font-size: 0.7rem;
+            font-size: clamp(0.7rem, 3vw, 0.9rem);
+            letter-spacing: 0.1em;
             border-radius: 2px;
             transition: transform 0.2s ease;
         }
 
         .rsvp-btn:active { transform: scale(0.95); }
 
-        /* Small screen adjustments */
-        @media (max-width: 480px) {
-            .content { width: 70%; margin-top: 8%; }
+        /* Mobile specific adjustments for very small screens */
+        @media (max-width: 400px) {
+            .container { aspect-ratio: 1 / 1.7; }
+            .content { width: 85%; }
+            .date-section { width: 90%; }
         }
     </style>
 </head>
 <body>
 
     <div class="main-container">
-        <div class="invitation-card">
+        <div class="container">
+            <div class="arch-bg"></div>
+            
             <div class="content">
                 <div class="header-text">The Wedding Of</div>
                 <div class="names">Bahy & Basma</div>
