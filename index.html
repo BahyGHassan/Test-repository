@@ -1,18 +1,110 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Our Wedding</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Wedding Invitation</title>
+    <!-- Importing elegant Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Great+Vibes&family=Montserrat:wght@300&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Georgia', serif; text-align: center; background: #f9f9f9; padding: 50px; }
-        h1 { color: #d4af37; }
-        .btn { background: #d4af37; color: white; padding: 15px 25px; text-decoration: none; border-radius: 5px; }
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #fcfaf7; /* Soft cream background */
+            color: #4a4a4a;
+            font-family: 'Montserrat', sans-serif;
+            text-align: center;
+        }
+
+        .container {
+            padding: 100px 20px;
+            border: 2px solid #d4af37; /* Gold border effect */
+            margin: 20px;
+            min-height: 80vh;
+        }
+
+        .names {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4rem;
+            color: #d4af37;
+            margin-bottom: 10px;
+        }
+
+        .header-text {
+            font-family: 'Cinzel', serif;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .details {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin: 40px 0;
+        }
+
+        .date {
+            font-weight: bold;
+            font-size: 1.5rem;
+            border-top: 1px solid #d4af37;
+            border-bottom: 1px solid #d4af37;
+            display: inline-block;
+            padding: 10px 40px;
+            margin: 20px 0;
+        }
+
+        .rsvp-btn {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 15px 40px;
+            background-color: #d4af37;
+            color: white;
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            border-radius: 2px;
+            transition: background 0.3s ease;
+        }
+
+        .rsvp-btn:hover {
+            background-color: #b8952e;
+        }
+
+        /* Decorative floral element (optional) */
+        .decoration {
+            font-size: 2rem;
+            color: #d4af37;
+            margin: 20px 0;
+        }
     </style>
 </head>
 <body>
-    <h1>We're Getting Married!</h1>
-    <p>Join us on October 10th, 2026</p>
-    <br><br>
-    <a href="YOUR_GOOGLE_FORM_LINK_HERE" class="btn">RSVP Here</a>
+
+    <div class="container">
+        <div class="header-text">The Wedding Of</div>
+        
+        <div class="names">Nada & Ahmed</div>
+        
+        <div class="decoration">✧</div>
+
+        <div class="details">
+            Together with their families, they request the <br>
+            honor of your presence at their wedding celebration.
+        </div>
+
+        <div class="date">
+            OCTOBER 10, 2026
+        </div>
+
+        <div class="details">
+            <strong>The Grand Palace Hall</strong><br>
+            Cairo, Egypt <br>
+            at 7:00 PM
+        </div>
+
+        <!-- Replace '#' with your Google Form or Tally.so link -->
+        <a href="#" class="rsvp-btn">Kindly RSVP</a>
+    </div>
+
 </body>
 </html>
-
