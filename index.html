@@ -19,38 +19,7 @@
             overflow-x: hidden;
         }
 
-        .main-container {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 40px 15px;
-            box-sizing: border-box;
-            min-height: 100vh;
-        }
-
-        @keyframes revealFrame {
-            0% { opacity: 0; transform: scale(0.92); }
-            100% { opacity: 1; transform: scale(1); }
-        }
-
-        /* Container holds BOTH the arch and the text together */
-        .container {
-            position: relative;
-            width: 100%;
-            max-width: 450px;
-            aspect-ratio: 1 / 1.5; 
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            opacity: 0; 
-            animation: revealFrame 2.5s ease-out 2s forwards;
-            z-index: 10;
-        }
-
-        /* Desktop Split Layout Fix */
+        /* Desktop Split Layout */
         @media (min-width: 1200px) {
             body { 
                 background: #f4f1ea; 
@@ -58,52 +27,86 @@
 
             .main-container {
                 display: flex;
+                width: 100%;
+                height: 100vh;
                 padding: 0;
             }
 
             /* Left Side: Mosque Image */
-            .main-container::before {
-                content: "";
+            .left-side {
                 width: 50%;
-                height: 100vh;
+                height: 100%;
                 background: url('background_4.jpg') no-repeat center center;
                 background-size: cover;
             }
 
-            /* Right Side: Centering the container properly */
-            .right-side-wrapper {
+            /* Right Side: Solid background for text */
+            .right-side {
                 width: 50%;
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 background-color: #f4f1ea;
             }
-
-            .container {
-                animation-delay: 0s; /* No delay on desktop */
+            
+            /* On desktop, we want the arch to be solid cream */
+            .arch-bg {
+                fill: rgba(252, 250, 247, 1) !important;
             }
         }
 
-        .arch-bg {
+        /* Mobile Layout Styling */
+        @media (max-width: 1199px) {
+            .main-container {
+                width: 100%;
+                padding: 40px 15px;
+                box-sizing: border-box;
+                display: flex;
+                justify-content: center;
+            }
+            /* On mobile, make the arch slightly transparent to see the mosque */
+            .arch-bg-path {
+                fill: rgba(252, 250, 247, 0.92) !important;
+            }
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            max-width: 420px;
+            aspect-ratio: 1 / 1.6; 
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            animation: reveal 2s ease-out forwards;
+        }
+
+        @keyframes reveal {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .arch-svg {
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             z-index: 1;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 140' preserveAspectRatio='none'%3E%3Cpath d='M50 0 C55 10 70 10 85 20 C100 30 100 50 100 70 C100 90 100 110 85 120 C70 130 55 130 50 140 C45 130 30 130 15 120 C0 110 0 90 0 70 C0 50 0 30 15 20 C30 10 45 10 50 0 Z' fill='rgba(252, 250, 247, 0.98)' /%3E%3Cpath d='M50 3 C54 12 68 12 82 22 C96 32 97 50 97 70 C97 90 96 108 82 118 C68 128 54 128 50 137 C46 128 32 128 18 118 C4 108 3 90 3 70 C3 50 4 32 18 22 C32 12 46 12 50 3 Z' fill='none' stroke='%23d4af37' stroke-width='0.8' /%3E%3C/svg%3E");
-            background-size: 100% 100%;
-            background-repeat: no-repeat;
         }
 
         .content {
             position: relative;
             z-index: 2;
             width: 80%;
-            padding: 20px 0;
+            padding: 10px 0;
         }
 
+        /* Typography sizing */
         .header-text {
             font-family: 'Cinzel', serif;
-            letter-spacing: 0.3em;
-            font-size: clamp(0.6rem, 2.5vw, 0.8rem);
+            letter-spacing: 0.2em;
+            font-size: clamp(0.6rem, 2.2vw, 0.75rem);
             color: #888;
             text-transform: uppercase;
             margin-bottom: 0.5em;
@@ -111,68 +114,65 @@
 
         .names {
             font-family: 'Great Vibes', cursive;
-            font-size: clamp(2.2rem, 10vw, 3.5rem);
+            font-size: clamp(2.4rem, 11vw, 3.8rem);
             color: #d4af37;
-            margin: 0.2em 0;
+            margin: 0.1em 0;
             line-height: 1.1;
         }
 
-        .symbol { 
-            color: #d4af37; 
-            font-size: clamp(1rem, 4vw, 1.3rem); 
-            margin: 0.5em 0; 
-        }
+        .symbol { color: #d4af37; font-size: 1.2rem; margin: 0.4em 0; }
 
         .details {
-            font-size: clamp(0.65rem, 2.8vw, 0.85rem);
+            font-size: clamp(0.7rem, 2.8vw, 0.85rem);
             line-height: 1.6;
-            color: #4a4a4a;
-            margin: 0.8em 0;
+            color: #444;
+            margin: 0.6em 0;
         }
 
         .date-section {
             border-top: 1px solid #d4af37;
             border-bottom: 1px solid #d4af37;
-            padding: 0.6em 0;
-            margin: 1.2em auto;
-            width: 85%;
+            padding: 0.5em 0;
+            margin: 1em auto;
+            width: 80%;
             font-weight: bold;
-            font-size: clamp(0.8rem, 3.5vw, 1.1rem);
-            color: #333;
-            letter-spacing: 0.15em;
+            font-size: clamp(0.85rem, 3.5vw, 1.1rem);
+            color: #222;
+            letter-spacing: 0.1em;
         }
 
         .rsvp-btn {
             display: inline-block;
-            margin-top: 1.5em;
-            padding: 1em 2.5em;
+            margin-top: 1.2em;
+            padding: 0.8em 2.2em;
             background-color: #c9a742; 
             color: white;
             text-decoration: none;
             font-family: 'Cinzel', serif;
             font-weight: 700;
-            font-size: clamp(0.7rem, 3vw, 0.9rem);
+            font-size: clamp(0.7rem, 2.5vw, 0.85rem);
             letter-spacing: 0.1em;
-            border-radius: 2px;
-            transition: transform 0.2s ease;
+            transition: 0.3s;
         }
 
-        .rsvp-btn:active { transform: scale(0.95); }
-
-        @media (max-width: 400px) {
-            .container { aspect-ratio: 1 / 1.7; }
-            .content { width: 85%; }
-            .date-section { width: 90%; }
-        }
+        .rsvp-btn:hover { background: #b08d2e; transform: scale(1.05); }
     </style>
 </head>
 <body>
 
     <div class="main-container">
-        <!-- New wrapper for the right side to keep frame and text together -->
-        <div class="right-side-wrapper">
+        <!-- This div only shows on PC -->
+        <div class="left-side"></div>
+
+        <div class="right-side">
             <div class="container">
-                <div class="arch-bg"></div>
+                <!-- SVG Frame with the double-line border effect -->
+                <svg class="arch-svg" viewBox="0 0 100 150" preserveAspectRatio="none">
+                    <!-- The Background Shape -->
+                    <path class="arch-bg-path" d="M50 0 C58 12 75 15 88 25 C100 35 100 55 100 75 C100 100 100 125 88 135 C75 145 58 145 50 150 C42 145 25 145 12 135 C0 125 0 100 0 75 C0 55 0 35 12 25 C25 15 42 12 50 0 Z" fill="rgba(252, 250, 247, 0.98)"/>
+                    <!-- The Gold Border Line -->
+                    <path d="M50 4 C57 14 73 17 85 27 C96 36 96 55 96 75 C96 95 96 122 85 131 C73 140 57 140 50 146 C43 140 27 140 15 131 C4 122 4 95 4 75 C4 55 4 36 15 27 C27 17 43 14 50 4 Z" fill="none" stroke="#d4af37" stroke-width="0.8"/>
+                </svg>
                 
                 <div class="content">
                     <div class="header-text">The Wedding Of</div>
@@ -195,7 +195,7 @@
                         Ceremony begins at 7:00 PM
                     </div>
 
-                    <a href="#" class="rsvp-btn">KINDLY RSVP</a>
+                    <a href="YOUR_RSVP_LINK" class="rsvp-btn">KINDLY RSVP</a>
                 </div>
             </div>
         </div>
