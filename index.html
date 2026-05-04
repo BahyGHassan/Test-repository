@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bahy & Basma's Wedding</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Great+Vibes&family=Montserrat:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Great+Vibes&family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
     <style>
         body {
             margin: 0;
@@ -27,16 +27,16 @@
             width: 100%;
             display: flex;
             justify-content: center;
-            padding: 40px 15px; /* Extra padding for small screens */
+            padding: 40px 15px;
             box-sizing: border-box;
         }
 
         .container {
             position: relative;
             width: 100%;
-            max-width: 450px;
-            /* Dynamic aspect ratio: taller on mobile to prevent text overflow */
-            aspect-ratio: 1 / 1.5; 
+            max-width: 480px;
+            /* Updated aspect ratio to match the taller geometric shape */
+            aspect-ratio: 1 / 1.7; 
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -48,47 +48,48 @@
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
             z-index: 1;
-            /* Combined Shape and Border SVG */
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 140' preserveAspectRatio='none'%3E%3Cpath d='M50 0 C55 10 70 10 85 20 C100 30 100 50 100 70 C100 90 100 110 85 120 C70 130 55 130 50 140 C45 130 30 130 15 120 C0 110 0 90 0 70 C0 50 0 30 15 20 C30 10 45 10 50 0 Z' fill='rgba(252, 250, 247, 0.98)' /%3E%3Cpath d='M50 3 C54 12 68 12 82 22 C96 32 97 50 97 70 C97 90 96 108 82 118 C68 128 54 128 50 137 C46 128 32 128 18 118 C4 108 3 90 3 70 C3 50 4 32 18 22 C32 12 46 12 50 3 Z' fill='none' stroke='%23d4af37' stroke-width='0.8' /%3E%3C/svg%3E");
+            /* NEW: Symmetrical geometric shape with SOLID fill */
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 170' preserveAspectRatio='none'%3E%3Cpath d='M50 0 L58 15 L68 15 L63 30 L78 30 L73 50 L93 50 L83 85 L100 85 L83 120 L93 120 L73 120 L78 140 L63 140 L68 155 L58 155 L50 170 L42 155 L32 155 L37 140 L22 140 L27 120 L7 120 L17 120 L0 85 L17 50 L7 50 L27 50 L22 30 L37 30 L32 15 L42 15 Z' fill='%23fcfaf7' /%3E%3Cpath d='M50 3 L57 17 L66 17 L62 32 L76 32 L71 52 L90 52 L81 85 L96 85 L81 118 L90 118 L71 118 L76 138 L62 138 L66 153 L57 153 L50 166 L43 153 L34 153 L38 138 L24 138 L29 118 L10 118 L19 118 L4 85 L19 52 L10 52 L29 52 L24 32 L38 32 L34 17 L43 17 Z' fill='none' stroke='%23d4af37' stroke-width='0.5' /%3E%3C/svg%3E");
             background-size: 100% 100%;
             background-repeat: no-repeat;
+            /* Shadow to give the solid frame some depth */
+            filter: drop-shadow(0px 10px 20px rgba(0,0,0,0.1));
         }
 
         .content {
             position: relative;
             z-index: 2;
-            width: 80%; /* Keeps text well away from the arch curves */
+            width: 70%; /* Narrower width to fit inside the "steps" of the frame */
             padding: 20px 0;
         }
 
-        /* FLUID TYPOGRAPHY: Sizes scale with viewport width (vw) */
         .header-text {
             font-family: 'Cinzel', serif;
             letter-spacing: 0.3em;
-            font-size: clamp(0.6rem, 2.5vw, 0.8rem);
-            color: #888;
+            font-size: clamp(0.6rem, 2.5vw, 0.75rem);
+            color: #777;
             text-transform: uppercase;
             margin-bottom: 0.5em;
         }
 
         .names {
             font-family: 'Great Vibes', cursive;
-            font-size: clamp(2.2rem, 10vw, 3.5rem);
-            color: #d4af37;
+            font-size: clamp(2.2rem, 10vw, 3rem);
+            color: #b08d26;
             margin: 0.2em 0;
             line-height: 1.1;
         }
 
         .symbol { 
             color: #d4af37; 
-            font-size: clamp(1rem, 4vw, 1.3rem); 
+            font-size: clamp(1rem, 4vw, 1.2rem); 
             margin: 0.5em 0; 
         }
 
         .details {
-            font-size: clamp(0.65rem, 2.8vw, 0.85rem);
+            font-size: clamp(0.65rem, 2.8vw, 0.8rem);
             line-height: 1.6;
-            color: #4a4a4a;
+            color: #333;
             margin: 0.8em 0;
         }
 
@@ -98,9 +99,9 @@
             padding: 0.6em 0;
             margin: 1.2em auto;
             width: 85%;
-            font-weight: bold;
-            font-size: clamp(0.8rem, 3.5vw, 1.1rem);
-            color: #333;
+            font-weight: 600;
+            font-size: clamp(0.8rem, 3.5vw, 1rem);
+            color: #000;
             letter-spacing: 0.15em;
         }
 
@@ -113,7 +114,7 @@
             text-decoration: none;
             font-family: 'Cinzel', serif;
             font-weight: 700;
-            font-size: clamp(0.7rem, 3vw, 0.9rem);
+            font-size: clamp(0.7rem, 3vw, 0.85rem);
             letter-spacing: 0.1em;
             border-radius: 2px;
             transition: transform 0.2s ease;
@@ -121,11 +122,9 @@
 
         .rsvp-btn:active { transform: scale(0.95); }
 
-        /* Mobile specific adjustments for very small screens */
         @media (max-width: 400px) {
-            .container { aspect-ratio: 1 / 1.7; }
-            .content { width: 85%; }
-            .date-section { width: 90%; }
+            .container { aspect-ratio: 1 / 1.8; }
+            .content { width: 75%; }
         }
     </style>
 </head>
