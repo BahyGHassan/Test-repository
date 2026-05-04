@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nada & Ahmed - Wedding</title>
+    <title>Nada & Ahmed's Wedding</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Great+Vibes&family=Montserrat:wght@300&display=swap" rel="stylesheet">
     <style>
         body {
             margin: 0;
             padding: 0;
-            /* Using your mosque image 1777855183140.jpeg */
-            background: url('1777855183140.jpeg') no-repeat center center fixed;
+            /* Forcing the background image 1777855183140.jpeg */
+            background: #f4f1ea url('background.jpg') no-repeat center center fixed;
             background-size: cover;
             min-height: 100vh;
             display: flex;
@@ -19,106 +19,100 @@
             font-family: 'Montserrat', sans-serif;
         }
 
-        /* Removes background on very large screens to prevent pixelation */
-        @media (min-width: 1600px) {
-            body { background: #f4f1ea; }
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+        /* Hide background on desktop screens (wider than 1200px) as requested */
+        @media (min-width: 1200px) {
+            body { background-image: none; background-color: #f4f1ea; }
         }
 
         .container {
-            animation: fadeInUp 1.5s ease-out;
-            background-color: rgba(255, 255, 255, 0.92);
-            padding: 60px 30px;
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 60px 20px;
             width: 85%;
-            max-width: 450px;
+            max-width: 420px;
             text-align: center;
+            border: 2px solid #d4af37;
             position: relative;
             
-            /* The Moroccan Arch Shape from image_d2f71e.png */
-            border-radius: 50% 50% 50% 50% / 15% 15% 15% 15%;
-            border: 2px solid #d4af37;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            /* The Pointed Arch Shape from image_d2f71e.png */
+            border-radius: 150px 150px 50px 50px / 100px 100px 50px 50px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            animation: slideUp 1.2s ease-out;
         }
 
-        /* Adding the double-border effect seen in your reference */
-        .container::after {
-            content: '';
+        /* Inner gold line for that elegant double-frame look */
+        .container::before {
+            content: "";
             position: absolute;
-            top: 10px; bottom: 10px; left: 10px; right: 10px;
+            top: 8px; left: 8px; right: 8px; bottom: 8px;
             border: 1px solid #d4af37;
             border-radius: inherit;
             pointer-events: none;
         }
 
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         .names {
             font-family: 'Great Vibes', cursive;
-            font-size: 3.5rem;
+            font-size: 3.8rem;
             color: #d4af37;
-            margin: 5px 0;
+            margin: 10px 0;
         }
 
         .header-text {
             font-family: 'Cinzel', serif;
-            letter-spacing: 3px;
-            text-transform: uppercase;
+            letter-spacing: 4px;
             font-size: 0.8rem;
             color: #777;
         }
 
-        .date-box {
-            border-top: 1px solid #d4af37;
-            border-bottom: 1px solid #d4af37;
-            display: inline-block;
-            padding: 10px 25px;
+        .details {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: #4a4a4a;
             margin: 20px 0;
-            font-weight: bold;
-            font-size: 1.1rem;
-            letter-spacing: 1px;
         }
 
-        .details {
-            font-size: 0.9rem;
-            line-height: 1.7;
-            color: #4a4a4a;
+        .date-divider {
+            border-top: 1px solid #d4af37;
+            border-bottom: 1px solid #d4af37;
+            padding: 10px 0;
+            margin: 20px 40px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #333;
         }
 
         .rsvp-btn {
             display: inline-block;
-            margin-top: 35px;
+            margin-top: 20px;
             padding: 15px 40px;
-            background-color: #d4af37;
+            background-color: #c9a742; /* Matches the button in your photo */
             color: white;
             text-decoration: none;
             font-family: 'Cinzel', serif;
             font-weight: 700;
-            border-radius: 3px;
-            transition: all 0.3s ease;
-            position: relative;
-            z-index: 10; /* Ensures button is clickable */
+            font-size: 0.9rem;
+            border-radius: 4px;
+            transition: 0.3s;
         }
 
         .rsvp-btn:hover {
-            background-color: #b8962e;
+            background-color: #333;
             transform: scale(1.05);
         }
 
-        .divider {
-            color: #d4af37;
-            font-size: 1.5rem;
-            margin: 10px 0;
-        }
+        .star { color: #d4af37; font-size: 1.2rem; }
     </style>
 </head>
 <body>
 
     <div class="container">
         <div class="header-text">The Wedding Of</div>
-        <h1 class="names">Nada & Ahmed</h1>
-        <div class="divider">✧</div>
+        <div class="names">Nada & Ahmed</div>
+        <div class="star">✧</div>
 
         <div class="details">
             Together with their families,<br>
@@ -126,7 +120,7 @@
             at their wedding celebration.
         </div>
 
-        <div class="date-box">
+        <div class="date-divider">
             OCTOBER 10, 2026
         </div>
 
