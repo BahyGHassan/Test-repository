@@ -18,113 +18,116 @@
             font-family: 'Montserrat', sans-serif;
         }
 
-        /* Hide background on desktop as requested */
         @media (min-width: 1200px) {
             body { background-image: none; background-color: #f4f1ea; }
         }
 
         .main-container {
             width: 100%;
-            padding: 40px 20px;
             display: flex;
             justify-content: center;
+            padding: 40px 20px;
+            animation: fadeIn 2s ease-in-out;
         }
 
         /* 
-           THE ARCH FRAME: 
-           aspect-ratio ensures it stays the correct shape on all devices.
+           THE FIXED FRAME:
+           Using a Mask-Image allows for perfect smooth curves and sharp points 
+           consistent with image_d2f71e.png.
         */
         .container {
             background-color: rgba(252, 250, 247, 0.98);
-            width: 100%;
-            max-width: 420px;
-            aspect-ratio: 1 / 1.4; /* Keeps the arch from stretching like a lemon */
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            padding: 100px 40px;
+            width: 90%;
+            max-width: 460px;
             text-align: center;
             position: relative;
-            padding: 20px;
-
-            /* High-definition Ogee Arch Path */
-            -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 140'%3E%3Cpath d='M50 0 C52 12 68 18 82 32 C95 45 100 65 100 85 C100 105 95 125 82 138 C68 152 52 158 50 170 C48 158 32 152 18 138 C5 125 0 105 0 85 C0 65 5 45 18 32 C32 18 48 12 50 0 Z'/%3E%3C/svg%3E");
-            mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 140'%3E%3Cpath d='M50 0 C52 12 68 18 82 32 C95 45 100 65 100 85 C100 105 95 125 82 138 C68 152 52 158 50 170 C48 158 32 152 18 138 C5 125 0 105 0 85 C0 65 5 45 18 32 C32 18 48 12 50 0 Z'/%3E%3C/svg%3E");
+            
+            /* High-fidelity architectural shape mask */
+            -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 130'%3E%3Cpath d='M50 0 C60 5 75 5 85 15 C95 25 100 40 100 65 C100 90 95 105 85 115 C75 125 60 125 50 130 C40 125 25 125 15 115 C5 105 0 90 0 65 C0 40 5 25 15 15 C25 5 40 5 50 0 Z'/%3E%3C/svg%3E");
+            mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 130'%3E%3Cpath d='M50 0 C60 5 75 5 85 15 C95 25 100 40 100 65 C100 90 95 105 85 115 C75 125 60 125 50 130 C40 125 25 125 15 115 C5 105 0 90 0 65 C0 40 5 25 15 15 C25 5 40 5 50 0 Z'/%3E%3C/svg%3E");
             -webkit-mask-size: 100% 100%;
             mask-size: 100% 100%;
             -webkit-mask-repeat: no-repeat;
             mask-repeat: no-repeat;
         }
 
-        /* Gold thin border line */
+        /* Gold Ornate Double Border to match the reference image */
         .container::before {
             content: "";
             position: absolute;
-            top: 15px; left: 15px; right: 15px; bottom: 15px;
-            border: 1px solid #d4af37;
+            top: 10px; left: 10px; right: 10px; bottom: 10px;
+            border: 2px solid #d4af37;
             -webkit-mask-image: inherit;
             mask-image: inherit;
             -webkit-mask-size: 100% 100%;
             mask-size: 100% 100%;
             pointer-events: none;
-            opacity: 0.6;
         }
 
-        .header-text {
-            font-family: 'Cinzel', serif;
-            letter-spacing: 3px;
-            font-size: 0.75rem;
-            color: #888;
-            margin-bottom: 5px;
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .names {
             font-family: 'Great Vibes', cursive;
-            font-size: 3rem;
+            font-size: 3.5rem;
             color: #d4af37;
-            margin: 0;
-            line-height: 1.2;
+            margin: 10px 0;
         }
 
-        .symbol { color: #d4af37; font-size: 1.2rem; margin: 10px 0; }
+        .header-text {
+            font-family: 'Cinzel', serif;
+            letter-spacing: 4px;
+            font-size: 0.8rem;
+            color: #777;
+            text-transform: uppercase;
+        }
 
         .details {
-            font-size: 0.85rem;
-            line-height: 1.6;
+            font-size: 0.9rem;
+            line-height: 1.8;
             color: #4a4a4a;
-            max-width: 80%;
+            margin: 10px 0;
         }
 
-        .date-divider {
-            width: 70%;
+        .date-section {
             border-top: 1px solid #d4af37;
             border-bottom: 1px solid #d4af37;
-            padding: 8px 0;
-            margin: 15px 0;
+            padding: 10px 0;
+            margin: 20px 40px;
             font-weight: bold;
             font-size: 1.1rem;
+            color: #333;
             letter-spacing: 1px;
         }
 
         .rsvp-btn {
             display: inline-block;
-            margin-top: 20px;
-            padding: 12px 40px;
-            background-color: #c9a742;
+            margin-top: 25px;
+            padding: 15px 40px;
+            background-color: #c9a742; 
             color: white;
             text-decoration: none;
             font-family: 'Cinzel', serif;
-            font-size: 0.85rem;
-            font-weight: bold;
-            letter-spacing: 1px;
-            transition: 0.3s;
+            font-weight: 700;
+            font-size: 0.9rem;
+            border-radius: 2px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
-        .rsvp-btn:hover { background-color: #333; }
+        .rsvp-btn:hover {
+            background-color: #333;
+            transform: translateY(-2px);
+        }
 
-        @media (max-width: 400px) {
-            .names { font-size: 2.5rem; }
-            .container { aspect-ratio: 1 / 1.5; }
+        .symbol { color: #d4af37; font-size: 1.2rem; margin: 10px 0; }
+
+        @media (max-width: 480px) {
+            .names { font-size: 2.8rem; }
+            .container { padding: 80px 20px; }
         }
     </style>
 </head>
@@ -132,7 +135,7 @@
 
     <div class="main-container">
         <div class="container">
-            <div class="header-text">THE WEDDING OF</div>
+            <div class="header-text">The Wedding Of</div>
             <div class="names">Nada & Ahmed</div>
             <div class="symbol">✧</div>
 
@@ -142,7 +145,7 @@
                 at their wedding celebration.
             </div>
 
-            <div class="date-divider">
+            <div class="date-section">
                 OCTOBER 10, 2026
             </div>
 
@@ -152,7 +155,7 @@
                 Ceremony begins at 7:00 PM
             </div>
 
-            <a href="#" class="rsvp-btn">KINDLY RSVP</a>
+            <a href="YOUR_RSVP_LINK_HERE" class="rsvp-btn">KINDLY RSVP</a>
         </div>
     </div>
 
