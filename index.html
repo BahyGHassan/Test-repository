@@ -31,7 +31,7 @@
             box-sizing: border-box;
         }
 
-        /* ANIMATION ADDED HERE */
+        /* The reveal animation */
         @keyframes revealFrame {
             0% { opacity: 0; transform: scale(0.92); }
             100% { opacity: 1; transform: scale(1); }
@@ -47,8 +47,12 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            /* Applying the reveal animation: 2 seconds long, smooth ease-out */
-            animation: revealFrame 2.2s ease-out forwards;
+            
+            /* Hidden initially */
+            opacity: 0; 
+            
+            /* 2s delay to show background, 2.5s duration for the reveal */
+            animation: revealFrame 2.5s ease-out 2s forwards;
         }
 
         .arch-bg {
