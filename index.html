@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bahy & Basma's Wedding </title>
+    <title>Bahy & Basma's Wedding</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Great+Vibes&family=Montserrat:wght@300&display=swap" rel="stylesheet">
     <style>
         body {
@@ -45,19 +45,52 @@
             text-align: center;
             opacity: 0; 
             
-            /* DEFAULT: 2s delay for when background is visible */
+            /* MOBILE/TABLET: 2s delay for background appreciation */
             animation: revealFrame 2.5s ease-out 2s forwards;
         }
 
-        /* DESKTOP ADJUSTMENTS: Background hidden, so remove delay */
+        /* DESKTOP SPLIT LAYOUT (Wider than 1200px) */
         @media (min-width: 1200px) {
             body { 
-                background-image: none; 
-                background-color: #f4f1ea; 
+                background: #f4f1ea; /* Clear the body background */
+                display: block; /* Change from flex to block to allow split */
             }
+
+            .main-container {
+                display: flex;
+                height: 100vh;
+                padding: 0;
+            }
+
+            /* Left side: Mosque Image */
+            .main-container::before {
+                content: "";
+                flex: 1;
+                background: url('background_3.jpg') no-repeat center center;
+                background-size: cover;
+            }
+
+            /* Right side: Invitation Space */
+            .main-container::after {
+                content: "";
+                position: absolute;
+                right: 0;
+                width: 50%;
+                height: 100%;
+                background-color: #f4f1ea;
+                z-index: 0;
+            }
+
             .container {
-                /* Animation starts immediately (0s delay) */
+                flex: 1;
+                max-width: none;
+                z-index: 1;
+                /* NO DELAY on desktop, reveal immediately */
                 animation: revealFrame 2.5s ease-out 0s forwards;
+            }
+
+            .container .arch-bg, .container .content {
+                max-width: 450px; /* Keep the frame itself at a standard size */
             }
         }
 
