@@ -4,142 +4,137 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nada & Ahmed - Our Wedding Celebration</title>
+    <!-- Elegant Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Great+Vibes&family=Montserrat:wght@300&display=swap" rel="stylesheet">
     <style>
+        /* 
+           Crucial: This looks for the exact file name you uploaded.
+           Must be named "background.png" in your repository main folder.
+        */
         body {
             margin: 0;
             padding: 0;
-            background-color: #f4f1ea; /* Elegant off-white for large screens */
+            background-image: url('background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Parallax scrolling effect */
+            background-repeat: no-repeat;
             color: #4a4a4a;
             font-family: 'Montserrat', sans-serif;
             text-align: center;
             min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
         }
 
-        /* 
-           1. Background Logic: 
-           Shows "1777855183140.jpeg" only on screens smaller than 1200px.
-        */
-        @media (max-width: 1200px) {
-            body {
-                background-image: url('1777855183140.jpeg');
-                background-size: cover;
-                background-position: center;
-                background-attachment: fixed;
-            }
-        }
-
+        /* Subtle Fade-In animation for the entire page load */
         @keyframes fadeInPage {
             0% { opacity: 0; }
             100% { opacity: 1; }
         }
 
+        /* Border zoom-in animation */
         @keyframes borderGrow {
-            0% { transform: scale(0.9); opacity: 0; }
+            0% { transform: scale(0.8); opacity: 0; }
             100% { transform: scale(1); opacity: 1; }
         }
 
         .main-container {
-            animation: fadeInPage 2s ease-in-out;
-            width: 100%;
-            padding: 20px;
+            animation: fadeInPage 2.5s ease-in-out; /* Page animation */
+            padding: 50px 0;
             display: flex;
             justify-content: center;
+            align-items: center;
+            min-height: 90vh;
         }
 
-        /* 
-           2. The Arched Frame Shape:
-           Using clip-path to create the Moroccan/Arabesque arch silhouette
-        */
         .container {
-            animation: borderGrow 1.2s ease-out;
-            background-color: rgba(252, 250, 247, 0.95);
-            padding: 100px 40px;
-            position: relative;
-            max-width: 500px;
-            width: 90%;
-            /* This creates the ornate arch shape */
-            clip-path: polygon(50% 0%, 80% 10%, 100% 35%, 100% 70%, 80% 90%, 50% 100%, 20% 90%, 0% 70%, 0% 35%, 20% 10%);
-            /* Fallback for browsers that don't support complex clip-paths */
-            border-radius: 50% 50% 10% 10% / 20% 20% 0% 0%; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-            border: 2px solid #d4af37;
-        }
-
-        /* Gold inner border simulation */
-        .container::after {
-            content: "";
-            position: absolute;
-            top: 10px; left: 10px; right: 10px; bottom: 10px;
-            border: 1px solid #d4af37;
-            clip-path: inherit;
-            pointer-events: none;
+            animation: borderGrow 1.5s ease-out; /* Border animation */
+            background-color: rgba(252, 250, 247, 0.9); /* Semi-transparent cream overlay for readability */
+            padding: 80px 20px;
+            border: 2px solid #d4af37; /* Gold border */
+            margin: 20px;
+            max-width: 600px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
         .names {
             font-family: 'Great Vibes', cursive;
-            font-size: 3.5rem;
+            font-size: 4.5rem;
             color: #d4af37;
-            margin: 10px 0;
-            transition: transform 0.3s ease;
+            margin-bottom: 5px;
+            transition: transform 0.3s ease; /* Hover effect animation */
+        }
+        
+        .names:hover {
+            transform: scale(1.05) rotate(-2deg); /* Dynamic hover */
         }
 
         .header-text {
             font-family: 'Cinzel', serif;
-            letter-spacing: 4px;
+            letter-spacing: 5px;
             text-transform: uppercase;
-            font-size: 0.9rem;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
             color: #6a6a6a;
         }
 
         .details {
-            font-size: 0.95rem;
-            line-height: 1.6;
-            margin: 20px 0;
+            font-size: 1rem;
+            line-height: 1.8;
+            margin: 30px 0;
         }
 
         .date {
+            font-family: 'Montserrat', sans-serif;
             font-weight: bold;
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             color: #333;
             border-top: 1px solid #d4af37;
             border-bottom: 1px solid #d4af37;
             display: inline-block;
-            padding: 8px 20px;
-            margin: 10px 0;
+            padding: 10px 30px;
+            margin: 15px 0;
             letter-spacing: 2px;
+        }
+
+        .venue {
+            margin-top: 40px;
+            font-weight: 300;
         }
 
         .rsvp-btn {
             display: inline-block;
-            margin-top: 30px;
-            padding: 15px 40px;
+            margin-top: 50px;
+            padding: 18px 45px;
             background-color: #d4af37;
             color: white;
             text-decoration: none;
             font-family: 'Cinzel', serif;
             font-weight: 700;
-            font-size: 1rem;
+            font-size: 1.1rem;
             border-radius: 2px;
-            transition: all 0.4s ease;
+            letter-spacing: 2px;
+            transition: all 0.4s ease; /* Smooth hover transition */
+            position: relative;
+            overflow: hidden;
         }
 
+        /* Hover slide animation for the button */
         .rsvp-btn:hover {
-            background-color: #333;
+            background-color: #333; /* Shifts color to match mosque architecture accents */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
             transform: translateY(-3px);
         }
 
         .decoration {
-            font-size: 1.5rem;
+            font-size: 2rem;
             color: #d4af37;
+            margin: 15px 0;
         }
-
+        
+        /* Mobile adjustment for large names font */
         @media (max-width: 600px) {
-            .names { font-size: 2.8rem; }
-            .container { padding: 80px 20px; }
+            .names { font-size: 3.2rem; }
+            .container { padding: 50px 15px; }
         }
     </style>
 </head>
@@ -154,22 +149,22 @@
             <div class="decoration">✧</div>
 
             <div class="details">
-                Together with their families,<br>
-                they request the honor of your presence<br>
-                at their wedding celebration.
+                Together with their families, they request the <br>
+                honor of your presence at their wedding celebration.
             </div>
 
             <div class="date">
                 OCTOBER 10, 2026
             </div>
 
-            <div class="details">
+            <div class="details venue">
                 <strong>THE GRAND PALACE HALL</strong><br>
                 Cairo, Egypt <br>
                 Ceremony begins at 7:00 PM
             </div>
 
-            <a href="YOUR_RSVP_FORM_LINK_HERE" class="rsvp-btn">Kindly RSVP</a>
+            <!-- Replace '#' with your Google Form or Tally.so link -->
+            <a href="YOUR_RSVP_FORM_LINK_GOES_HERE" class="rsvp-btn">Kindly RSVP</a>
         </div>
     </div>
 
