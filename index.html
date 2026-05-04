@@ -4,13 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bahy & Basma's Katb Ketab</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Great+Vibes&family=Montserrat:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Great+Vibes&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
     <style>
         body {
             margin: 0;
             padding: 0;
-            background: #f4f1ea url('background.jpg') no-repeat center center fixed;
-            background-size: cover;
+            background: #f4f1ea;
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -19,117 +18,134 @@
             overflow-x: hidden;
         }
 
-        @media (min-width: 1200px) {
-            body { background-image: none; background-color: #f4f1ea; }
+        /* Mobile Background with Mosque */
+        @media (max-width: 1024px) {
+            body {
+                background: url('background.jpg') no-repeat center center fixed;
+                background-size: cover;
+            }
         }
 
         .main-container {
             width: 100%;
             display: flex;
             justify-content: center;
-            padding: 40px 15px; /* Extra padding for small screens */
+            padding: 40px 15px;
             box-sizing: border-box;
         }
 
         .container {
             position: relative;
             width: 100%;
-            max-width: 450px;
-            /* Dynamic aspect ratio: taller on mobile to prevent text overflow */
-            aspect-ratio: 1 / 1.5; 
+            max-width: 480px;
+            aspect-ratio: 1 / 1.6; 
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
+            /* Frosted glass effect for mobile */
+            backdrop-filter: blur(3px);
+            -webkit-backdrop-filter: blur(3px);
+            clip-path: url(#ornament-clip);
+            -webkit-clip-path: url(#ornament-clip);
         }
 
         .arch-bg {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
             z-index: 1;
-            /* Combined Shape and Border SVG */
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 140' preserveAspectRatio='none'%3E%3Cpath d='M50 0 C55 10 70 10 85 20 C100 30 100 50 100 70 C100 90 100 110 85 120 C70 130 55 130 50 140 C45 130 30 130 15 120 C0 110 0 90 0 70 C0 50 0 30 15 20 C30 10 45 10 50 0 Z' fill='rgba(252, 250, 247, 0.98)' /%3E%3Cpath d='M50 3 C54 12 68 12 82 22 C96 32 97 50 97 70 C97 90 96 108 82 118 C68 128 54 128 50 137 C46 128 32 128 18 118 C4 108 3 90 3 70 C3 50 4 32 18 22 C32 12 46 12 50 3 Z' fill='none' stroke='%23d4af37' stroke-width='0.8' /%3E%3C/svg%3E");
+            /* Updated SVG Path for the stepped geometric ornament */
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 150' preserveAspectRatio='none'%3E%3Cpath d='M50 0 L55 10 L65 10 L60 25 L75 25 L70 45 L90 45 L80 75 L100 75 L80 105 L90 105 L70 115 L75 125 L60 125 L65 140 L55 140 L50 150 L45 140 L35 140 L40 125 L25 125 L30 115 L10 105 L20 105 L0 75 L20 45 L10 45 L30 35 L25 25 L40 25 L35 10 L45 10 Z' fill='rgba(252, 250, 247, 0.92)' /%3E%3Cpath d='M50 4 L54 12 L63 12 L59 26 L73 26 L69 44 L87 44 L78 75 L96 75 L78 106 L87 106 L69 116 L73 124 L59 124 L63 138 L54 138 L50 146 L46 138 L37 138 L41 124 L27 124 L31 116 L13 106 L22 106 L4 75 L22 44 L13 44 L31 36 L27 26 L41 26 L37 12 L46 12 Z' fill='none' stroke='%23d4af37' stroke-width='0.6' /%3E%3C/svg%3E");
             background-size: 100% 100%;
             background-repeat: no-repeat;
+        }
+
+        /* Transparency only for mobile */
+        @media (max-width: 1024px) {
+            .arch-bg {
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 150' preserveAspectRatio='none'%3E%3Cpath d='M50 0 L55 10 L65 10 L60 25 L75 25 L70 45 L90 45 L80 75 L100 75 L80 105 L90 105 L70 115 L75 125 L60 125 L65 140 L55 140 L50 150 L45 140 L35 140 L40 125 L25 125 L30 115 L10 105 L20 105 L0 75 L20 45 L10 45 L30 35 L25 25 L40 25 L35 10 L45 10 Z' fill='rgba(255, 255, 255, 0.2)' /%3E%3Cpath d='M50 4 L54 12 L63 12 L59 26 L73 26 L69 44 L87 44 L78 75 L96 75 L78 106 L87 106 L69 116 L73 124 L59 124 L63 138 L54 138 L50 146 L46 138 L37 138 L41 124 L27 124 L31 116 L13 106 L22 106 L4 75 L22 44 L13 44 L31 36 L27 26 L41 26 L37 12 L46 12 Z' fill='none' stroke='%23d4af37' stroke-width='0.6' /%3E%3C/svg%3E");
+            }
+            .content {
+                text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.8);
+            }
         }
 
         .content {
             position: relative;
             z-index: 2;
-            width: 80%; /* Keeps text well away from the arch curves */
+            width: 70%; 
             padding: 20px 0;
         }
 
-        /* FLUID TYPOGRAPHY: Sizes scale with viewport width (vw) */
         .header-text {
             font-family: 'Cinzel', serif;
-            letter-spacing: 0.3em;
-            font-size: clamp(0.6rem, 2.5vw, 0.8rem);
-            color: #888;
+            letter-spacing: 0.2em;
+            font-size: clamp(0.55rem, 2.2vw, 0.75rem);
+            color: #666;
             text-transform: uppercase;
             margin-bottom: 0.5em;
         }
 
         .names {
             font-family: 'Great Vibes', cursive;
-            font-size: clamp(2.2rem, 10vw, 3.5rem);
-            color: #d4af37;
+            font-size: clamp(2rem, 9vw, 3.2rem);
+            color: #b08d26;
             margin: 0.2em 0;
             line-height: 1.1;
         }
 
-        .symbol { 
-            color: #d4af37; 
-            font-size: clamp(1rem, 4vw, 1.3rem); 
-            margin: 0.5em 0; 
-        }
+        .symbol { color: #d4af37; font-size: clamp(0.9rem, 3.5vw, 1.2rem); margin: 0.4em 0; }
 
         .details {
-            font-size: clamp(0.65rem, 2.8vw, 0.85rem);
-            line-height: 1.6;
-            color: #4a4a4a;
-            margin: 0.8em 0;
+            font-size: clamp(0.6rem, 2.5vw, 0.8rem);
+            line-height: 1.5;
+            color: #222;
+            margin: 0.6em 0;
+            font-weight: 400;
         }
 
         .date-section {
             border-top: 1px solid #d4af37;
             border-bottom: 1px solid #d4af37;
-            padding: 0.6em 0;
-            margin: 1.2em auto;
-            width: 85%;
-            font-weight: bold;
-            font-size: clamp(0.8rem, 3.5vw, 1.1rem);
-            color: #333;
-            letter-spacing: 0.15em;
+            padding: 0.5em 0;
+            margin: 1em auto;
+            width: 80%;
+            font-weight: 600;
+            font-size: clamp(0.75rem, 3.2vw, 1rem);
+            color: #000;
+            letter-spacing: 0.1em;
         }
 
         .rsvp-btn {
             display: inline-block;
-            margin-top: 1.5em;
-            padding: 1em 2.5em;
+            margin-top: 1.2em;
+            padding: 0.8em 2em;
             background-color: #c9a742; 
             color: white;
             text-decoration: none;
             font-family: 'Cinzel', serif;
             font-weight: 700;
-            font-size: clamp(0.7rem, 3vw, 0.9rem);
-            letter-spacing: 0.1em;
+            font-size: clamp(0.65rem, 2.8vw, 0.85rem);
             border-radius: 2px;
-            transition: transform 0.2s ease;
         }
 
-        .rsvp-btn:active { transform: scale(0.95); }
-
-        /* Mobile specific adjustments for very small screens */
         @media (max-width: 400px) {
             .container { aspect-ratio: 1 / 1.7; }
-            .content { width: 85%; }
-            .date-section { width: 90%; }
+            .content { width: 75%; }
         }
     </style>
 </head>
 <body>
+
+    <!-- Updated ClipPath for the Geometric Ornament -->
+    <svg width="0" height="0" style="position: absolute;">
+        <defs>
+            <clipPath id="ornament-clip" clipPathUnits="objectBoundingBox">
+                <path d="M0.5,0 L0.55,0.06 L0.65,0.06 L0.6,0.16 L0.75,0.16 L0.7,0.3 L0.9,0.3 L0.8,0.5 L1,0.5 L0.8,0.7 L0.9,0.7 L0.7,0.76 L0.75,0.83 L0.6,0.83 L0.65,0.93 L0.55,0.93 L0.5,1 L0.45,0.93 L0.35,0.93 L0.4,0.83 L0.25,0.83 L0.3,0.76 L0.1,0.7 L0.2,0.7 L0,0.5 L0.2,0.3 L0.1,0.3 L0.3,0.16 L0.25,0.16 L0.4,0.16 L0.35,0.06 L0.45,0.06 Z" />
+            </clipPath>
+        </defs>
+    </svg>
 
     <div class="main-container">
         <div class="container">
