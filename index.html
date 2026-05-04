@@ -9,7 +9,7 @@
         body {
             margin: 0;
             padding: 0;
-            /* Forcing the background image 1777855183140.jpeg */
+            /* Using your verified background name */
             background: #f4f1ea url('background.jpg') no-repeat center center fixed;
             background-size: cover;
             min-height: 100vh;
@@ -19,44 +19,52 @@
             font-family: 'Montserrat', sans-serif;
         }
 
-        /* Hide background on desktop screens (wider than 1200px) as requested */
+        /* Responsive: Hide mosque background on screens larger than the image resolution (approx 1200px) */
         @media (min-width: 1200px) {
             body { background-image: none; background-color: #f4f1ea; }
         }
 
-        .container {
-            background-color: rgba(255, 255, 255, 0.95);
-            padding: 60px 20px;
-            width: 85%;
-            max-width: 420px;
-            text-align: center;
-            border: 2px solid #d4af37;
-            position: relative;
-            
-            /* The Pointed Arch Shape from image_d2f71e.png */
-            border-radius: 150px 150px 50px 50px / 100px 100px 50px 50px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            animation: slideUp 1.2s ease-out;
+        .main-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            animation: fadeIn 2s ease-in-out;
         }
 
-        /* Inner gold line for that elegant double-frame look */
-        .container::before {
-            content: "";
+        /* 
+           The Scalloped Arch Frame from image_d2f71e.png 
+           Created with a detailed clip-path for that exact architectural shape.
+        */
+        .container {
+            background-color: rgba(252, 250, 247, 0.96);
+            padding: 80px 30px;
+            width: 90%;
+            max-width: 450px;
+            text-align: center;
+            position: relative;
+            /* Precise architectural silhouette */
+            clip-path: polygon(50% 0%, 61% 3%, 74% 5%, 83% 11%, 91% 19%, 96% 29%, 100% 41%, 100% 60%, 96% 74%, 88% 85%, 78% 93%, 63% 97%, 50% 100%, 37% 97%, 22% 93%, 12% 85%, 4% 74%, 0% 60%, 0% 41%, 4% 29%, 9% 19%, 17% 11%, 26% 5%, 39% 3%);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        /* Gold Ornate Border - Matches image_d2f71e.png double-line style */
+        .border-overlay {
             position: absolute;
-            top: 8px; left: 8px; right: 8px; bottom: 8px;
-            border: 1px solid #d4af37;
-            border-radius: inherit;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border: 3px double #d4af37;
+            clip-path: inherit;
             pointer-events: none;
         }
 
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(50px); }
-            to { opacity: 1; transform: translateY(0); }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .names {
             font-family: 'Great Vibes', cursive;
-            font-size: 3.8rem;
+            font-size: 3.5rem;
             color: #d4af37;
             margin: 10px 0;
         }
@@ -66,71 +74,84 @@
             letter-spacing: 4px;
             font-size: 0.8rem;
             color: #777;
+            text-transform: uppercase;
         }
 
         .details {
             font-size: 0.95rem;
             line-height: 1.8;
             color: #4a4a4a;
-            margin: 20px 0;
+            margin: 15px 0;
         }
 
-        .date-divider {
+        .date-section {
             border-top: 1px solid #d4af37;
             border-bottom: 1px solid #d4af37;
-            padding: 10px 0;
-            margin: 20px 40px;
+            padding: 12px 0;
+            margin: 20px 30px;
             font-weight: bold;
             font-size: 1.2rem;
             color: #333;
+            letter-spacing: 1px;
         }
 
         .rsvp-btn {
             display: inline-block;
-            margin-top: 20px;
-            padding: 15px 40px;
-            background-color: #c9a742; /* Matches the button in your photo */
+            margin-top: 25px;
+            padding: 16px 45px;
+            background-color: #c9a742; /* Precise gold from your screenshot */
             color: white;
             text-decoration: none;
             font-family: 'Cinzel', serif;
             font-weight: 700;
-            font-size: 0.9rem;
-            border-radius: 4px;
-            transition: 0.3s;
+            font-size: 1rem;
+            border-radius: 2px;
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
         .rsvp-btn:hover {
             background-color: #333;
-            transform: scale(1.05);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
         }
 
-        .star { color: #d4af37; font-size: 1.2rem; }
+        .symbol { color: #d4af37; font-size: 1.5rem; margin: 10px 0; }
+
+        @media (max-width: 480px) {
+            .names { font-size: 2.8rem; }
+            .container { padding: 60px 20px; }
+        }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <div class="header-text">The Wedding Of</div>
-        <div class="names">Nada & Ahmed</div>
-        <div class="star">✧</div>
+    <div class="main-container">
+        <div class="container">
+            <div class="border-overlay"></div>
+            
+            <div class="header-text">The Wedding Of</div>
+            <div class="names">Nada & Ahmed</div>
+            <div class="symbol">✧</div>
 
-        <div class="details">
-            Together with their families,<br>
-            they request the honor of your presence<br>
-            at their wedding celebration.
+            <div class="details">
+                Together with their families,<br>
+                they request the honor of your presence<br>
+                at their wedding celebration.
+            </div>
+
+            <div class="date-section">
+                OCTOBER 10, 2026
+            </div>
+
+            <div class="details">
+                <strong>THE GRAND PALACE HALL</strong><br>
+                Cairo, Egypt <br>
+                Ceremony begins at 7:00 PM
+            </div>
+
+            <a href="YOUR_RSVP_LINK_HERE" class="rsvp-btn">KINDLY RSVP</a>
         </div>
-
-        <div class="date-divider">
-            OCTOBER 10, 2026
-        </div>
-
-        <div class="details">
-            <strong>THE GRAND PALACE HALL</strong><br>
-            Cairo, Egypt <br>
-            Ceremony begins at 7:00 PM
-        </div>
-
-        <a href="YOUR_RSVP_LINK_HERE" class="rsvp-btn">KINDLY RSVP</a>
     </div>
 
 </body>
