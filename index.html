@@ -23,16 +23,18 @@
             width: 100%;
             display: flex;
             justify-content: center;
+            align-items: center;
             padding: 40px 15px;
             box-sizing: border-box;
+            min-height: 100vh;
         }
 
-        /* The reveal animation */
         @keyframes revealFrame {
             0% { opacity: 0; transform: scale(0.92); }
             100% { opacity: 1; transform: scale(1); }
         }
 
+        /* Container holds BOTH the arch and the text together */
         .container {
             position: relative;
             width: 100%;
@@ -44,53 +46,41 @@
             align-items: center;
             text-align: center;
             opacity: 0; 
-            
-            /* MOBILE/TABLET: 2s delay for background appreciation */
             animation: revealFrame 2.5s ease-out 2s forwards;
+            z-index: 10;
         }
 
-        /* DESKTOP SPLIT LAYOUT (Wider than 1200px) */
+        /* Desktop Split Layout Fix */
         @media (min-width: 1200px) {
             body { 
-                background: #f4f1ea; /* Clear the body background */
-                display: block; /* Change from flex to block to allow split */
+                background: #f4f1ea; 
             }
 
             .main-container {
                 display: flex;
-                height: 100vh;
                 padding: 0;
             }
 
-            /* Left side: Mosque Image */
+            /* Left Side: Mosque Image */
             .main-container::before {
                 content: "";
-                flex: 1;
+                width: 50%;
+                height: 100vh;
                 background: url('background_3.jpg') no-repeat center center;
                 background-size: cover;
             }
 
-            /* Right side: Invitation Space */
-            .main-container::after {
-                content: "";
-                position: absolute;
-                right: 0;
+            /* Right Side: Centering the container properly */
+            .right-side-wrapper {
                 width: 50%;
-                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
                 background-color: #f4f1ea;
-                z-index: 0;
             }
 
             .container {
-                flex: 1;
-                max-width: none;
-                z-index: 1;
-                /* NO DELAY on desktop, reveal immediately */
-                animation: revealFrame 2.5s ease-out 0s forwards;
-            }
-
-            .container .arch-bg, .container .content {
-                max-width: 450px; /* Keep the frame itself at a standard size */
+                animation-delay: 0s; /* No delay on desktop */
             }
         }
 
@@ -179,31 +169,34 @@
 <body>
 
     <div class="main-container">
-        <div class="container">
-            <div class="arch-bg"></div>
-            
-            <div class="content">
-                <div class="header-text">The Wedding Of</div>
-                <div class="names">Bahy & Basma</div>
-                <div class="symbol">✧</div>
+        <!-- New wrapper for the right side to keep frame and text together -->
+        <div class="right-side-wrapper">
+            <div class="container">
+                <div class="arch-bg"></div>
+                
+                <div class="content">
+                    <div class="header-text">The Wedding Of</div>
+                    <div class="names">Bahy & Basma</div>
+                    <div class="symbol">✧</div>
 
-                <div class="details">
-                    Together with their families,<br>
-                    they request the honor of your presence<br>
-                    at their wedding celebration.
+                    <div class="details">
+                        Together with their families,<br>
+                        they request the honor of your presence<br>
+                        at their wedding celebration.
+                    </div>
+
+                    <div class="date-section">
+                        OCTOBER 10, 2026
+                    </div>
+
+                    <div class="details">
+                        <strong>THE GRAND PALACE HALL</strong><br>
+                        Cairo, Egypt <br>
+                        Ceremony begins at 7:00 PM
+                    </div>
+
+                    <a href="#" class="rsvp-btn">KINDLY RSVP</a>
                 </div>
-
-                <div class="date-section">
-                    OCTOBER 10, 2026
-                </div>
-
-                <div class="details">
-                    <strong>THE GRAND PALACE HALL</strong><br>
-                    Cairo, Egypt <br>
-                    Ceremony begins at 7:00 PM
-                </div>
-
-                <a href="#" class="rsvp-btn">KINDLY RSVP</a>
             </div>
         </div>
     </div>
