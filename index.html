@@ -3,169 +3,140 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nada & Ahmed - Our Wedding Celebration</title>
-    <!-- Elegant Google Fonts -->
+    <title>Nada & Ahmed - Wedding</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Great+Vibes&family=Montserrat:wght@300&display=swap" rel="stylesheet">
     <style>
-        /* 
-           Crucial: This looks for the exact file name you uploaded.
-           Must be named "background.png" in your repository main folder.
-        */
         body {
             margin: 0;
             padding: 0;
-            background-image: url('background.jpg');
+            /* Using your mosque image 1777855183140.jpeg */
+            background: url('1777855183140.jpeg') no-repeat center center fixed;
             background-size: cover;
-            background-position: center;
-            background-attachment: fixed; /* Parallax scrolling effect */
-            background-repeat: no-repeat;
-            color: #4a4a4a;
-            font-family: 'Montserrat', sans-serif;
-            text-align: center;
             min-height: 100vh;
-        }
-
-        /* Subtle Fade-In animation for the entire page load */
-        @keyframes fadeInPage {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
-        }
-
-        /* Border zoom-in animation */
-        @keyframes borderGrow {
-            0% { transform: scale(0.8); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
-        }
-
-        .main-container {
-            animation: fadeInPage 2.5s ease-in-out; /* Page animation */
-            padding: 50px 0;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 90vh;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Removes background on very large screens to prevent pixelation */
+        @media (min-width: 1600px) {
+            body { background: #f4f1ea; }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .container {
-            animation: borderGrow 1.5s ease-out; /* Border animation */
-            background-color: rgba(252, 250, 247, 0.9); /* Semi-transparent cream overlay for readability */
-            padding: 80px 20px;
-            border: 2px solid #d4af37; /* Gold border */
-            margin: 20px;
-            max-width: 600px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            animation: fadeInUp 1.5s ease-out;
+            background-color: rgba(255, 255, 255, 0.92);
+            padding: 60px 30px;
+            width: 85%;
+            max-width: 450px;
+            text-align: center;
+            position: relative;
+            
+            /* The Moroccan Arch Shape from image_d2f71e.png */
+            border-radius: 50% 50% 50% 50% / 15% 15% 15% 15%;
+            border: 2px solid #d4af37;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+
+        /* Adding the double-border effect seen in your reference */
+        .container::after {
+            content: '';
+            position: absolute;
+            top: 10px; bottom: 10px; left: 10px; right: 10px;
+            border: 1px solid #d4af37;
+            border-radius: inherit;
+            pointer-events: none;
         }
 
         .names {
             font-family: 'Great Vibes', cursive;
-            font-size: 4.5rem;
+            font-size: 3.5rem;
             color: #d4af37;
-            margin-bottom: 5px;
-            transition: transform 0.3s ease; /* Hover effect animation */
-        }
-        
-        .names:hover {
-            transform: scale(1.05) rotate(-2deg); /* Dynamic hover */
+            margin: 5px 0;
         }
 
         .header-text {
             font-family: 'Cinzel', serif;
-            letter-spacing: 5px;
+            letter-spacing: 3px;
             text-transform: uppercase;
-            font-size: 1.1rem;
-            margin-bottom: 20px;
-            color: #6a6a6a;
+            font-size: 0.8rem;
+            color: #777;
         }
 
-        .details {
-            font-size: 1rem;
-            line-height: 1.8;
-            margin: 30px 0;
-        }
-
-        .date {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: bold;
-            font-size: 1.4rem;
-            color: #333;
+        .date-box {
             border-top: 1px solid #d4af37;
             border-bottom: 1px solid #d4af37;
             display: inline-block;
-            padding: 10px 30px;
-            margin: 15px 0;
-            letter-spacing: 2px;
+            padding: 10px 25px;
+            margin: 20px 0;
+            font-weight: bold;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
         }
 
-        .venue {
-            margin-top: 40px;
-            font-weight: 300;
+        .details {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: #4a4a4a;
         }
 
         .rsvp-btn {
             display: inline-block;
-            margin-top: 50px;
-            padding: 18px 45px;
+            margin-top: 35px;
+            padding: 15px 40px;
             background-color: #d4af37;
             color: white;
             text-decoration: none;
             font-family: 'Cinzel', serif;
             font-weight: 700;
-            font-size: 1.1rem;
-            border-radius: 2px;
-            letter-spacing: 2px;
-            transition: all 0.4s ease; /* Smooth hover transition */
+            border-radius: 3px;
+            transition: all 0.3s ease;
             position: relative;
-            overflow: hidden;
+            z-index: 10; /* Ensures button is clickable */
         }
 
-        /* Hover slide animation for the button */
         .rsvp-btn:hover {
-            background-color: #333; /* Shifts color to match mosque architecture accents */
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            transform: translateY(-3px);
+            background-color: #b8962e;
+            transform: scale(1.05);
         }
 
-        .decoration {
-            font-size: 2rem;
+        .divider {
             color: #d4af37;
-            margin: 15px 0;
-        }
-        
-        /* Mobile adjustment for large names font */
-        @media (max-width: 600px) {
-            .names { font-size: 3.2rem; }
-            .container { padding: 50px 15px; }
+            font-size: 1.5rem;
+            margin: 10px 0;
         }
     </style>
 </head>
 <body>
 
-    <div class="main-container">
-        <div class="container">
-            <div class="header-text">The Wedding Of</div>
-            
-            <div class="names">Nada & Ahmed</div>
-            
-            <div class="decoration">✧</div>
+    <div class="container">
+        <div class="header-text">The Wedding Of</div>
+        <h1 class="names">Nada & Ahmed</h1>
+        <div class="divider">✧</div>
 
-            <div class="details">
-                Together with their families, they request the <br>
-                honor of your presence at their wedding celebration.
-            </div>
-
-            <div class="date">
-                OCTOBER 10, 2026
-            </div>
-
-            <div class="details venue">
-                <strong>THE GRAND PALACE HALL</strong><br>
-                Cairo, Egypt <br>
-                Ceremony begins at 7:00 PM
-            </div>
-
-            <!-- Replace '#' with your Google Form or Tally.so link -->
-            <a href="YOUR_RSVP_FORM_LINK_GOES_HERE" class="rsvp-btn">Kindly RSVP</a>
+        <div class="details">
+            Together with their families,<br>
+            they request the honor of your presence<br>
+            at their wedding celebration.
         </div>
+
+        <div class="date-box">
+            OCTOBER 10, 2026
+        </div>
+
+        <div class="details">
+            <strong>THE GRAND PALACE HALL</strong><br>
+            Cairo, Egypt <br>
+            Ceremony begins at 7:00 PM
+        </div>
+
+        <a href="YOUR_RSVP_LINK_HERE" class="rsvp-btn">KINDLY RSVP</a>
     </div>
 
 </body>
