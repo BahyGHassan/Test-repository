@@ -31,53 +31,42 @@
         }
 
         .container {
-            aspect-ratio: 1 / 1.4; 
+            position: relative;
             width: 95%;
-            max-width: 440px;
+            max-width: 450px;
+            aspect-ratio: 1 / 1.4;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            position: relative;
-            padding: 40px 0;
+            padding: 20px;
         }
 
-        /* THE SHAPE LAYER */
-        .container-bg {
+        /* 
+           The Background Layer: 
+           Using a Background SVG ensures the border and shape are rendered 
+           together without "cutting" each other off.
+        */
+        .arch-bg {
             position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-color: rgba(252, 250, 247, 0.98);
+            top: 0; left: 0; width: 100%; height: 100%;
             z-index: 1;
-            /* Arch Mask applied here instead of the parent */
-            -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 140'%3E%3Cpath d='M50 0 C55 10 70 10 85 20 C100 30 100 50 100 70 C100 90 100 110 85 120 C70 130 55 130 50 140 C45 130 30 130 15 120 C0 110 0 90 0 70 C0 50 0 30 15 20 C30 10 45 10 50 0 Z'/%3E%3C/svg%3E");
-            mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 140'%3E%3Cpath d='M50 0 C55 10 70 10 85 20 C100 30 100 50 100 70 C100 90 100 110 85 120 C70 130 55 130 50 140 C45 130 30 130 15 120 C0 110 0 90 0 70 C0 50 0 30 15 20 C30 10 45 10 50 0 Z'/%3E%3C/svg%3E");
-            -webkit-mask-size: 100% 100%;
-            mask-size: 100% 100%;
-            -webkit-mask-repeat: no-repeat;
-            mask-repeat: no-repeat;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 140' preserveAspectRatio='none'%3E%3Cpath d='M50 0 C55 10 70 10 85 20 C100 30 100 50 100 70 C100 90 100 110 85 120 C70 130 55 130 50 140 C45 130 30 130 15 120 C0 110 0 90 0 70 C0 50 0 30 15 20 C30 10 45 10 50 0 Z' fill='rgba(252, 250, 247, 0.98)' /%3E%3Cpath d='M50 3 C54 12 68 12 82 22 C96 32 97 50 97 70 C97 90 96 108 82 118 C68 128 54 128 50 137 C46 128 32 128 18 118 C4 108 3 90 3 70 C3 50 4 32 18 22 C32 12 46 12 50 3 Z' fill='none' stroke='%23d4af37' stroke-width='0.8' /%3E%3C/svg%3E");
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
         }
 
-        /* THE GOLD STRIPE LAYER */
-        .container-border {
-            position: absolute;
-            top: 10px; left: 10px; right: 10px; bottom: 10px;
-            border: 1.5px solid #d4af37;
-            pointer-events: none;
+        .content {
+            position: relative;
             z-index: 2;
-            /* Mask applied to the border line itself */
-            -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 140'%3E%3Cpath d='M50 0 C55 10 70 10 85 20 C100 30 100 50 100 70 C100 90 100 110 85 120 C70 130 55 130 50 140 C45 130 30 130 15 120 C0 110 0 90 0 70 C0 50 0 30 15 20 C30 10 45 10 50 0 Z'/%3E%3C/svg%3E");
-            mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 140'%3E%3Cpath d='M50 0 C55 10 70 10 85 20 C100 30 100 50 100 70 C100 90 100 110 85 120 C70 130 55 130 50 140 C45 130 30 130 15 120 C0 110 0 90 0 70 C0 50 0 30 15 20 C30 10 45 10 50 0 Z'/%3E%3C/svg%3E");
-            -webkit-mask-size: 100% 100%;
-            mask-size: 100% 100%;
+            width: 100%;
+            padding: 0 10%;
         }
-
-        /* CONTENT STYLES */
-        .content { position: relative; z-index: 10; width: 100%; }
 
         .names {
             font-family: 'Great Vibes', cursive;
-            font-size: 3rem;
+            font-size: clamp(2rem, 8vw, 3.2rem);
             color: #d4af37;
             margin: 5px 0;
         }
@@ -94,16 +83,15 @@
             font-size: 0.85rem;
             line-height: 1.6;
             color: #4a4a4a;
-            margin: 8px 0;
-            padding: 0 18%;
+            margin: 10px 0;
         }
 
         .date-section {
             border-top: 1px solid #d4af37;
             border-bottom: 1px solid #d4af37;
-            padding: 8px 0;
-            margin: 15px auto;
-            width: 60%;
+            padding: 10px 0;
+            margin: 20px auto;
+            width: 70%;
             font-weight: bold;
             font-size: 1.1rem;
             color: #333;
@@ -112,16 +100,15 @@
 
         .rsvp-btn {
             display: inline-block;
-            margin-top: 15px;
-            padding: 12px 35px;
+            margin-top: 20px;
+            padding: 14px 40px;
             background-color: #c9a742; 
             color: white;
             text-decoration: none;
             font-family: 'Cinzel', serif;
             font-weight: 700;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             border-radius: 2px;
-            transition: 0.3s;
         }
 
         .symbol { color: #d4af37; font-size: 1.2rem; margin: 5px 0; }
@@ -130,10 +117,8 @@
 
         @media (max-width: 480px) {
             .container { aspect-ratio: 1 / 1.6; }
-            .names { font-size: 2.3rem; }
-            .details { font-size: 0.75rem; padding: 0 12%; }
-            .date-section { width: 75%; font-size: 1rem; }
-            .container-border { top: 7px; left: 7px; right: 7px; bottom: 7px; }
+            .date-section { width: 85%; }
+            .content { padding: 0 12%; }
         }
     </style>
 </head>
@@ -141,11 +126,9 @@
 
     <div class="main-container">
         <div class="container">
-            <!-- Layers -->
-            <div class="container-bg"></div>
-            <div class="container-border"></div>
+            <!-- Background SVG with built-in stroke -->
+            <div class="arch-bg"></div>
             
-            <!-- All content goes inside this relative div -->
             <div class="content">
                 <div class="header-text">The Wedding Of</div>
                 <div class="names">Nada & Ahmed</div>
