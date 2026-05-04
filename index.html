@@ -18,7 +18,6 @@
             font-family: 'Montserrat', sans-serif;
         }
 
-        /* Responsive: Hide mosque background on screens larger than 1200px */
         @media (min-width: 1200px) {
             body { background-image: none; background-color: #f4f1ea; }
         }
@@ -27,37 +26,37 @@
             width: 100%;
             display: flex;
             justify-content: center;
-            padding: 40px 20px;
+            padding: 20px;
             animation: fadeIn 2s ease-in-out;
         }
 
         /* 
-           THE ORNATE FRAME:
-           This uses a specific SVG path to create the "ogee" pointed arch 
-           found in image_d2f71e.png.
+           THE REFINED ARCH:
+           Adjusted the SVG path to ensure sharp "nipped" points at top/bottom
+           and graceful curves on the sides to match image_d2f71e.png.
         */
         .container {
             background-color: rgba(252, 250, 247, 0.98);
-            padding: 110px 45px;
-            width: 95%;
-            max-width: 480px;
+            padding: 80px 40px;
+            width: 90%;
+            max-width: 440px;
             text-align: center;
             position: relative;
             
-            /* High-fidelity architectural mask */
-            -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 140'%3E%3Cpath d='M50 0 C55 10 70 10 85 20 C100 30 100 50 100 70 C100 90 100 110 85 120 C70 130 55 130 50 140 C45 130 30 130 15 120 C0 110 0 90 0 70 C0 50 0 30 15 20 C30 10 45 10 50 0 Z'/%3E%3C/svg%3E");
-            mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 140'%3E%3Cpath d='M50 0 C55 10 70 10 85 20 C100 30 100 50 100 70 C100 90 100 110 85 120 C70 130 55 130 50 140 C45 130 30 130 15 120 C0 110 0 90 0 70 C0 50 0 30 15 20 C30 10 45 10 50 0 Z'/%3E%3C/svg%3E");
+            /* Improved SVG Arch Path */
+            -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 120'%3E%3Cpath d='M50 0 C53 8 65 12 80 25 C95 38 100 55 100 70 C100 85 95 102 80 115 C65 128 53 132 50 140 C47 132 35 128 20 115 C5 102 0 85 0 70 C0 55 5 38 20 25 C35 12 47 8 50 0 Z'/%3E%3C/svg%3E");
+            mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 120'%3E%3Cpath d='M50 0 C53 8 65 12 80 25 C95 38 100 55 100 70 C100 85 95 102 80 115 C65 128 53 132 50 140 C47 132 35 128 20 115 C5 102 0 85 0 70 C0 55 5 38 20 25 C35 12 47 8 50 0 Z'/%3E%3C/svg%3E");
             -webkit-mask-size: 100% 100%;
             mask-size: 100% 100%;
             -webkit-mask-repeat: no-repeat;
             mask-repeat: no-repeat;
         }
 
-        /* Inner Gold Border - styled to match the thin line in image_d2f71e.png */
+        /* Subtle Gold Inner Border */
         .container::before {
             content: "";
             position: absolute;
-            top: 12px; left: 12px; right: 12px; bottom: 12px;
+            top: 10px; left: 10px; right: 10px; bottom: 10px;
             border: 1.5px solid #d4af37;
             -webkit-mask-image: inherit;
             mask-image: inherit;
@@ -73,50 +72,49 @@
 
         .names {
             font-family: 'Great Vibes', cursive;
-            font-size: 3.6rem;
+            font-size: 3.2rem;
             color: #d4af37;
-            margin: 15px 0 5px 0;
+            margin: 10px 0;
         }
 
         .header-text {
             font-family: 'Cinzel', serif;
-            letter-spacing: 5px;
-            font-size: 0.85rem;
+            letter-spacing: 4px;
+            font-size: 0.8rem;
             color: #888;
             text-transform: uppercase;
         }
 
         .details {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             line-height: 1.8;
             color: #4a4a4a;
-            margin: 15px 0;
+            margin: 10px 0;
         }
 
-        .date-section {
+        .date-box {
             border-top: 1px solid #d4af37;
             border-bottom: 1px solid #d4af37;
-            padding: 12px 0;
-            margin: 25px 40px;
+            padding: 10px 0;
+            margin: 15px 30px;
             font-weight: bold;
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             color: #333;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
         }
 
         .rsvp-btn {
             display: inline-block;
-            margin-top: 30px;
-            padding: 16px 50px;
+            margin-top: 20px;
+            padding: 14px 45px;
             background-color: #c9a742; 
             color: white;
             text-decoration: none;
             font-family: 'Cinzel', serif;
             font-weight: 700;
-            font-size: 1rem;
-            border-radius: 4px;
+            font-size: 0.9rem;
+            border-radius: 2px;
             transition: all 0.3s;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
 
         .rsvp-btn:hover {
@@ -124,12 +122,11 @@
             transform: translateY(-2px);
         }
 
-        .symbol { color: #d4af37; font-size: 1.4rem; margin: 10px 0; }
+        .symbol { color: #d4af37; font-size: 1.2rem; margin: 5px 0; }
 
         @media (max-width: 480px) {
-            .names { font-size: 3rem; }
-            .container { padding: 90px 25px; }
-            .date-section { margin: 20px 20px; }
+            .names { font-size: 2.6rem; }
+            .container { padding: 70px 15px; }
         }
     </style>
 </head>
@@ -147,7 +144,7 @@
                 at their wedding celebration.
             </div>
 
-            <div class="date-section">
+            <div class="date-box">
                 OCTOBER 10, 2026
             </div>
 
@@ -157,7 +154,8 @@
                 Ceremony begins at 7:00 PM
             </div>
 
-            <a href="YOUR_RSVP_LINK_HERE" class="rsvp-btn">KINDLY RSVP</a>
+            <!-- Make sure to insert your RSVP link here -->
+            <a href="INSERT_YOUR_LINK" class="rsvp-btn">KINDLY RSVP</a>
         </div>
     </div>
 
