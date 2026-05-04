@@ -18,6 +18,7 @@
             font-family: 'Montserrat', sans-serif;
         }
 
+        /* Responsive: Hide mosque background on screens larger than 1200px */
         @media (min-width: 1200px) {
             body { background-image: none; background-color: #f4f1ea; }
         }
@@ -31,33 +32,33 @@
         }
 
         /* 
-           THE FIXED FRAME:
-           Using a Mask-Image allows for perfect smooth curves and sharp points 
-           consistent with image_d2f71e.png.
+           THE ORNATE FRAME:
+           This uses a specific SVG path to create the "ogee" pointed arch 
+           found in image_d2f71e.png.
         */
         .container {
             background-color: rgba(252, 250, 247, 0.98);
-            padding: 100px 40px;
-            width: 90%;
-            max-width: 460px;
+            padding: 110px 45px;
+            width: 95%;
+            max-width: 480px;
             text-align: center;
             position: relative;
             
-            /* High-fidelity architectural shape mask */
-            -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 130'%3E%3Cpath d='M50 0 C60 5 75 5 85 15 C95 25 100 40 100 65 C100 90 95 105 85 115 C75 125 60 125 50 130 C40 125 25 125 15 115 C5 105 0 90 0 65 C0 40 5 25 15 15 C25 5 40 5 50 0 Z'/%3E%3C/svg%3E");
-            mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 130'%3E%3Cpath d='M50 0 C60 5 75 5 85 15 C95 25 100 40 100 65 C100 90 95 105 85 115 C75 125 60 125 50 130 C40 125 25 125 15 115 C5 105 0 90 0 65 C0 40 5 25 15 15 C25 5 40 5 50 0 Z'/%3E%3C/svg%3E");
+            /* High-fidelity architectural mask */
+            -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 140'%3E%3Cpath d='M50 0 C55 10 70 10 85 20 C100 30 100 50 100 70 C100 90 100 110 85 120 C70 130 55 130 50 140 C45 130 30 130 15 120 C0 110 0 90 0 70 C0 50 0 30 15 20 C30 10 45 10 50 0 Z'/%3E%3C/svg%3E");
+            mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 140'%3E%3Cpath d='M50 0 C55 10 70 10 85 20 C100 30 100 50 100 70 C100 90 100 110 85 120 C70 130 55 130 50 140 C45 130 30 130 15 120 C0 110 0 90 0 70 C0 50 0 30 15 20 C30 10 45 10 50 0 Z'/%3E%3C/svg%3E");
             -webkit-mask-size: 100% 100%;
             mask-size: 100% 100%;
             -webkit-mask-repeat: no-repeat;
             mask-repeat: no-repeat;
         }
 
-        /* Gold Ornate Double Border to match the reference image */
+        /* Inner Gold Border - styled to match the thin line in image_d2f71e.png */
         .container::before {
             content: "";
             position: absolute;
-            top: 10px; left: 10px; right: 10px; bottom: 10px;
-            border: 2px solid #d4af37;
+            top: 12px; left: 12px; right: 12px; bottom: 12px;
+            border: 1.5px solid #d4af37;
             -webkit-mask-image: inherit;
             mask-image: inherit;
             -webkit-mask-size: 100% 100%;
@@ -72,50 +73,50 @@
 
         .names {
             font-family: 'Great Vibes', cursive;
-            font-size: 3.5rem;
+            font-size: 3.6rem;
             color: #d4af37;
-            margin: 10px 0;
+            margin: 15px 0 5px 0;
         }
 
         .header-text {
             font-family: 'Cinzel', serif;
-            letter-spacing: 4px;
-            font-size: 0.8rem;
-            color: #777;
+            letter-spacing: 5px;
+            font-size: 0.85rem;
+            color: #888;
             text-transform: uppercase;
         }
 
         .details {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             line-height: 1.8;
             color: #4a4a4a;
-            margin: 10px 0;
+            margin: 15px 0;
         }
 
         .date-section {
             border-top: 1px solid #d4af37;
             border-bottom: 1px solid #d4af37;
-            padding: 10px 0;
-            margin: 20px 40px;
+            padding: 12px 0;
+            margin: 25px 40px;
             font-weight: bold;
-            font-size: 1.1rem;
+            font-size: 1.25rem;
             color: #333;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
         }
 
         .rsvp-btn {
             display: inline-block;
-            margin-top: 25px;
-            padding: 15px 40px;
+            margin-top: 30px;
+            padding: 16px 50px;
             background-color: #c9a742; 
             color: white;
             text-decoration: none;
             font-family: 'Cinzel', serif;
             font-weight: 700;
-            font-size: 0.9rem;
-            border-radius: 2px;
+            font-size: 1rem;
+            border-radius: 4px;
             transition: all 0.3s;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
 
         .rsvp-btn:hover {
@@ -123,11 +124,12 @@
             transform: translateY(-2px);
         }
 
-        .symbol { color: #d4af37; font-size: 1.2rem; margin: 10px 0; }
+        .symbol { color: #d4af37; font-size: 1.4rem; margin: 10px 0; }
 
         @media (max-width: 480px) {
-            .names { font-size: 2.8rem; }
-            .container { padding: 80px 20px; }
+            .names { font-size: 3rem; }
+            .container { padding: 90px 25px; }
+            .date-section { margin: 20px 20px; }
         }
     </style>
 </head>
