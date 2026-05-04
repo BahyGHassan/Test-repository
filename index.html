@@ -32,7 +32,6 @@
 
         .container {
             background-color: rgba(252, 250, 247, 0.98);
-            /* Aspect ratio ensures the arch never squashes or stretches */
             aspect-ratio: 1 / 1.35; 
             width: 95%;
             max-width: 440px;
@@ -51,16 +50,31 @@
             mask-repeat: no-repeat;
         }
 
+        /* The Gold Stripes on the sides */
+        .container::after, .side-stripe {
+            content: "";
+            position: absolute;
+            top: 40%;
+            width: 2px;
+            height: 20%;
+            background: linear-gradient(to bottom, transparent, #d4af37, transparent);
+            border-radius: 5px;
+        }
+
+        .container::after { right: 8px; } /* Right stripe */
+        .side-stripe { left: 8px; }      /* Left stripe */
+
         .container::before {
             content: "";
             position: absolute;
             top: 12px; left: 12px; right: 12px; bottom: 12px;
-            border: 1.5px solid #d4af37;
+            border: 1.2px solid #d4af37;
             -webkit-mask-image: inherit;
             mask-image: inherit;
             -webkit-mask-size: 100% 100%;
             mask-size: 100% 100%;
             pointer-events: none;
+            opacity: 0.5;
         }
 
         @keyframes fadeIn {
@@ -88,7 +102,7 @@
             line-height: 1.6;
             color: #4a4a4a;
             margin: 8px 0;
-            padding: 0 15%; /* Keeps text away from the curved edges */
+            padding: 0 15%;
         }
 
         .date-section {
@@ -119,14 +133,11 @@
 
         .symbol { color: #d4af37; font-size: 1.2rem; margin: 5px 0; }
 
-        /* Mobile specific fixes */
         @media (max-width: 480px) {
             .names { font-size: 2.2rem; }
-            .header-text { font-size: 0.65rem; letter-spacing: 3px; }
-            .details { font-size: 0.75rem; margin: 4px 0; }
-            .date-section { font-size: 0.95rem; padding: 6px 0; width: 75%; }
-            .rsvp-btn { padding: 10px 25px; font-size: 0.8rem; }
-            .container { aspect-ratio: 1 / 1.5; } /* Slightly taller on mobile for wrap space */
+            .details { font-size: 0.75rem; }
+            .container { aspect-ratio: 1 / 1.5; }
+            .container::after, .side-stripe { height: 15%; top: 42%; }
         }
     </style>
 </head>
@@ -134,6 +145,9 @@
 
     <div class="main-container">
         <div class="container">
+            <!-- Left side stripe element -->
+            <div class="side-stripe"></div>
+            
             <div class="header-text">The Wedding Of</div>
             <div class="names">Nada & Ahmed</div>
             <div class="symbol">✧</div>
