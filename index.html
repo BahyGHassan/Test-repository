@@ -6,23 +6,16 @@
     <title>Nada & Ahmed's Wedding</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Great+Vibes&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        /* --- PC STYLES --- */
+        /* PC DEFAULT: Solid and Clean */
         body {
             margin: 0;
             padding: 0;
-            background-color: #f4f1ea; /* Solid color only on PC */
+            background-color: #f4f1ea;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             font-family: 'Montserrat', sans-serif;
-        }
-
-        .main-container {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            padding: 20px;
         }
 
         .container {
@@ -46,46 +39,43 @@
             background-size: 100% 100%;
         }
 
-        /* --- MOBILE STYLES (Screen < 1024px) --- */
+        /* MOBILE ENHANCEMENTS: True Transparency */
         @media (max-width: 1024px) {
             body {
-                /* Mosque background only for mobile/tablet */
                 background: url('background.jpg') no-repeat center center fixed;
                 background-size: cover;
             }
 
             .container {
-                /* Frosted glass effect */
-                backdrop-filter: blur(12px);
-                -webkit-backdrop-filter: blur(12px);
-                /* Clips the blur so it stays inside the arch */
+                /* Reduced Blur for clarity */
+                backdrop-filter: blur(3px); 
+                -webkit-backdrop-filter: blur(3px);
                 clip-path: url(#arch-clip);
                 -webkit-clip-path: url(#arch-clip);
             }
 
             .arch-bg {
-                /* TRULY TRANSPARENT: rgba(255,255,255, 0.4) for much more clarity */
-                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 140' preserveAspectRatio='none'%3E%3Cpath d='M50 0 C55 10 70 10 85 20 C100 30 100 50 100 70 C100 90 100 110 85 120 C70 130 55 130 50 140 C45 130 30 130 15 120 C0 110 0 90 0 70 C0 50 0 30 15 20 C30 10 45 10 50 0 Z' fill='rgba(255, 255, 255, 0.3)' /%3E%3Cpath d='M50 3 C54 12 68 12 82 22 C96 32 97 50 97 70 C97 90 96 108 82 118 C68 128 54 128 50 137 C46 128 32 128 18 118 C4 108 3 90 3 70 C3 50 4 32 18 22 C32 12 46 12 50 3 Z' fill='none' stroke='%23d4af37' stroke-width='0.8' /%3E%3C/svg%3E");
+                /* GHOST WHITE: Only 10% opacity for maximum transparency */
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 140' preserveAspectRatio='none'%3E%3Cpath d='M50 0 C55 10 70 10 85 20 C100 30 100 50 100 70 C100 90 100 110 85 120 C70 130 55 130 50 140 C45 130 30 130 15 120 C0 110 0 90 0 70 C0 50 0 30 15 20 C30 10 45 10 50 0 Z' fill='rgba(255, 255, 255, 0.1)' /%3E%3Cpath d='M50 3 C54 12 68 12 82 22 C96 32 97 50 97 70 C97 90 96 108 82 118 C68 128 54 128 50 137 C46 128 32 128 18 118 C4 108 3 90 3 70 C3 50 4 32 18 22 C32 12 46 12 50 3 Z' fill='none' stroke='%23d4af37' stroke-width='0.8' /%3E%3C/svg%3E");
             }
 
             .content {
-                /* Extra shadow to ensure text stays clear over the image */
-                text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.8);
+                /* Darker text & stronger glow for readability over sharp background image */
+                text-shadow: 0px 0px 8px rgba(255, 255, 255, 1), 0px 0px 20px rgba(255, 255, 255, 0.5);
             }
         }
 
-        /* Text & Button Styling */
+        /* UI Elements */
         .content { position: relative; z-index: 2; width: 82%; }
-        .names { font-family: 'Great Vibes', cursive; font-size: clamp(2.4rem, 11vw, 3.8rem); color: #b08d26; margin: 0.1em 0; }
-        .header-text { font-family: 'Cinzel', serif; letter-spacing: 0.3em; font-size: clamp(0.6rem, 2.5vw, 0.8rem); color: #444; text-transform: uppercase; }
+        .names { font-family: 'Great Vibes', cursive; font-size: clamp(2.4rem, 11vw, 3.8rem); color: #a68420; margin: 0.1em 0; }
+        .header-text { font-family: 'Cinzel', serif; letter-spacing: 0.3em; font-size: clamp(0.6rem, 2.5vw, 0.8rem); color: #222; text-transform: uppercase; }
         .date-section { border-top: 1.5px solid #d4af37; border-bottom: 1.5px solid #d4af37; padding: 0.6em 0; margin: 1.2em auto; width: 85%; font-weight: 600; font-size: clamp(0.85rem, 3.8vw, 1.1rem); color: #000; }
-        .details { font-size: clamp(0.7rem, 2.8vw, 0.85rem); line-height: 1.6; color: #111; margin: 0.8em 0; }
-        .rsvp-btn { display: inline-block; margin-top: 1.5em; padding: 1em 2.5em; background-color: #c9a742; color: white; text-decoration: none; font-family: 'Cinzel', serif; font-weight: 700; font-size: clamp(0.75rem, 3vw, 0.9rem); border-radius: 2px; }
+        .details { font-size: clamp(0.7rem, 2.8vw, 0.85rem); line-height: 1.6; color: #000; margin: 0.8em 0; font-weight: 500; }
+        .rsvp-btn { display: inline-block; margin-top: 1.5em; padding: 1em 2.5em; background-color: #c9a742; color: white; text-decoration: none; font-family: 'Cinzel', serif; font-weight: 700; font-size: clamp(0.75rem, 3vw, 0.9rem); border-radius: 2px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
     </style>
 </head>
 <body>
 
-    <!-- SVG Clip-Path Definition: Forces the frosted effect to stay inside the shape -->
     <svg width="0" height="0" style="position: absolute;">
         <defs>
             <clipPath id="arch-clip" clipPathUnits="objectBoundingBox">
@@ -94,27 +84,24 @@
         </defs>
     </svg>
 
-    <div class="main-container">
-        <div class="container">
-            <div class="arch-bg"></div>
-            
-            <div class="content">
-                <div class="header-text">The Wedding Of</div>
-                <div class="names">Nada & Ahmed</div>
-                <div class="symbol" style="color:#d4af37;">✧</div>
-                <div class="details">
-                    Together with their families,<br>
-                    they request the honor of your presence<br>
-                    at their wedding celebration.
-                </div>
-                <div class="date-section">OCTOBER 10, 2026</div>
-                <div class="details">
-                    <strong style="color:#000;">THE GRAND PALACE HALL</strong><br>
-                    Cairo, Egypt <br>
-                    Ceremony begins at 7:00 PM
-                </div>
-                <a href="#" class="rsvp-btn">KINDLY RSVP</a>
+    <div class="container">
+        <div class="arch-bg"></div>
+        <div class="content">
+            <div class="header-text">The Wedding Of</div>
+            <div class="names">Nada & Ahmed</div>
+            <div class="symbol" style="color:#d4af37; margin: 0.4em 0;">✧</div>
+            <div class="details">
+                Together with their families,<br>
+                they request the honor of your presence<br>
+                at their wedding celebration.
             </div>
+            <div class="date-section">OCTOBER 10, 2026</div>
+            <div class="details">
+                <strong>THE GRAND PALACE HALL</strong><br>
+                Cairo, Egypt <br>
+                Ceremony begins at 7:00 PM
+            </div>
+            <a href="#" class="rsvp-btn">KINDLY RSVP</a>
         </div>
     </div>
 
