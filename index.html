@@ -6,16 +6,26 @@
     <title>Nada & Ahmed's Wedding</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Great+Vibes&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        /* PC DEFAULT: Solid and Clean */
         body {
             margin: 0;
             padding: 0;
-            background-color: #f4f1ea;
+            /* Using the mosque image from your reference */
+            background: #f4f1ea url('background.jpg') no-repeat center center fixed;
+            background-size: cover;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .main-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 40px 15px;
+            box-sizing: border-box;
         }
 
         .container {
@@ -28,80 +38,124 @@
             justify-content: center;
             align-items: center;
             text-align: center;
+            /* Added blur effect to make text pop against the mosque background */
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 50% 50% 0 0; /* Rough shape match for filter clipping */
         }
 
         .arch-bg {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
             z-index: 1;
-            /* Solid White for PC */
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 140' preserveAspectRatio='none'%3E%3Cpath d='M50 0 C55 10 70 10 85 20 C100 30 100 50 100 70 C100 90 100 110 85 120 C70 130 55 130 50 140 C45 130 30 130 15 120 C0 110 0 90 0 70 C0 50 0 30 15 20 C30 10 45 10 50 0 Z' fill='%23fcfaf7' /%3E%3Cpath d='M50 3 C54 12 68 12 82 22 C96 32 97 50 97 70 C97 90 96 108 82 118 C68 128 54 128 50 137 C46 128 32 128 18 118 C4 108 3 90 3 70 C3 50 4 32 18 22 C32 12 46 12 50 3 Z' fill='none' stroke='%23d4af37' stroke-width='0.8' /%3E%3C/svg%3E");
+            /* Fill changed to semi-transparent white (0.8 opacity) */
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 140' preserveAspectRatio='none'%3E%3Cpath d='M50 0 C55 10 70 10 85 20 C100 30 100 50 100 70 C100 90 100 110 85 120 C70 130 55 130 50 140 C45 130 30 130 15 120 C0 110 0 90 0 70 C0 50 0 30 15 20 C30 10 45 10 50 0 Z' fill='rgba(255, 255, 255, 0.8)' /%3E%3Cpath d='M50 3 C54 12 68 12 82 22 C96 32 97 50 97 70 C97 90 96 108 82 118 C68 128 54 128 50 137 C46 128 32 128 18 118 C4 108 3 90 3 70 C3 50 4 32 18 22 C32 12 46 12 50 3 Z' fill='none' stroke='%23d4af37' stroke-width='0.8' /%3E%3C/svg%3E");
             background-size: 100% 100%;
+            background-repeat: no-repeat;
         }
 
-        /* MOBILE ENHANCEMENTS: True Transparency */
-        @media (max-width: 1024px) {
-            body {
-                background: url('background.jpg') no-repeat center center fixed;
-                background-size: cover;
-            }
-
-            .container {
-                /* Reduced Blur for clarity */
-                backdrop-filter: blur(3px); 
-                -webkit-backdrop-filter: blur(3px);
-                clip-path: url(#arch-clip);
-                -webkit-clip-path: url(#arch-clip);
-            }
-
-            .arch-bg {
-                /* GHOST WHITE: Only 10% opacity for maximum transparency */
-                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 140' preserveAspectRatio='none'%3E%3Cpath d='M50 0 C55 10 70 10 85 20 C100 30 100 50 100 70 C100 90 100 110 85 120 C70 130 55 130 50 140 C45 130 30 130 15 120 C0 110 0 90 0 70 C0 50 0 30 15 20 C30 10 45 10 50 0 Z' fill='rgba(255, 255, 255, 0.1)' /%3E%3Cpath d='M50 3 C54 12 68 12 82 22 C96 32 97 50 97 70 C97 90 96 108 82 118 C68 128 54 128 50 137 C46 128 32 128 18 118 C4 108 3 90 3 70 C3 50 4 32 18 22 C32 12 46 12 50 3 Z' fill='none' stroke='%23d4af37' stroke-width='0.8' /%3E%3C/svg%3E");
-            }
-
-            .content {
-                /* Darker text & stronger glow for readability over sharp background image */
-                text-shadow: 0px 0px 8px rgba(255, 255, 255, 1), 0px 0px 20px rgba(255, 255, 255, 0.5);
-            }
+        .content {
+            position: relative;
+            z-index: 2;
+            width: 82%;
+            padding: 20px 0;
+            /* Subtle text shadow for legibility over images */
+            text-shadow: 0px 1px 2px rgba(255, 255, 255, 0.5);
         }
 
-        /* UI Elements */
-        .content { position: relative; z-index: 2; width: 82%; }
-        .names { font-family: 'Great Vibes', cursive; font-size: clamp(2.4rem, 11vw, 3.8rem); color: #a68420; margin: 0.1em 0; }
-        .header-text { font-family: 'Cinzel', serif; letter-spacing: 0.3em; font-size: clamp(0.6rem, 2.5vw, 0.8rem); color: #222; text-transform: uppercase; }
-        .date-section { border-top: 1.5px solid #d4af37; border-bottom: 1.5px solid #d4af37; padding: 0.6em 0; margin: 1.2em auto; width: 85%; font-weight: 600; font-size: clamp(0.85rem, 3.8vw, 1.1rem); color: #000; }
-        .details { font-size: clamp(0.7rem, 2.8vw, 0.85rem); line-height: 1.6; color: #000; margin: 0.8em 0; font-weight: 500; }
-        .rsvp-btn { display: inline-block; margin-top: 1.5em; padding: 1em 2.5em; background-color: #c9a742; color: white; text-decoration: none; font-family: 'Cinzel', serif; font-weight: 700; font-size: clamp(0.75rem, 3vw, 0.9rem); border-radius: 2px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+        .header-text {
+            font-family: 'Cinzel', serif;
+            letter-spacing: 0.3em;
+            font-size: clamp(0.6rem, 2.5vw, 0.8rem);
+            color: #555; /* Slightly darker for contrast */
+            text-transform: uppercase;
+            margin-bottom: 0.5em;
+        }
+
+        .names {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(2.4rem, 11vw, 3.8rem);
+            color: #b08d26; /* Deepened gold for better visibility on white-glass */
+            margin: 0.1em 0;
+            line-height: 1.1;
+        }
+
+        .symbol { 
+            color: #d4af37; 
+            font-size: clamp(1rem, 4vw, 1.3rem); 
+            margin: 0.4em 0; 
+        }
+
+        .details {
+            font-size: clamp(0.7rem, 2.8vw, 0.85rem);
+            line-height: 1.6;
+            color: #222; /* Darker text for readability */
+            margin: 0.8em 0;
+            font-weight: 400;
+        }
+
+        .date-section {
+            border-top: 1.5px solid #d4af37;
+            border-bottom: 1.5px solid #d4af37;
+            padding: 0.6em 0;
+            margin: 1.2em auto;
+            width: 85%;
+            font-weight: 600;
+            font-size: clamp(0.85rem, 3.8vw, 1.1rem);
+            color: #111;
+            letter-spacing: 0.15em;
+        }
+
+        .rsvp-btn {
+            display: inline-block;
+            margin-top: 1.5em;
+            padding: 1em 2.5em;
+            background-color: #c9a742; 
+            color: white;
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: clamp(0.75rem, 3vw, 0.9rem);
+            letter-spacing: 0.1em;
+            border-radius: 2px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        @media (max-width: 480px) {
+            .container { aspect-ratio: 1 / 1.7; }
+            .content { width: 88%; }
+        }
     </style>
 </head>
 <body>
 
-    <svg width="0" height="0" style="position: absolute;">
-        <defs>
-            <clipPath id="arch-clip" clipPathUnits="objectBoundingBox">
-                <path d="M0.5,0 C0.55,0.071 0.7,0.071 0.85,0.143 C1,0.214 1,0.357 1,0.5 C1,0.643 1,0.786 0.85,0.857 C0.7,0.929 0.55,0.929 0.5,1 C0.45,0.929 0.3,0.929 0.15,0.857 C0,0.786 0,0.643 0,0.5 C0,0.357 0,0.214 0.15,0.143 C0.3,0.071 0.45,0.071 0.5,0 Z" />
-            </clipPath>
-        </defs>
-    </svg>
+    <div class="main-container">
+        <div class="container">
+            <div class="arch-bg"></div>
+            
+            <div class="content">
+                <div class="header-text">The Wedding Of</div>
+                <div class="names">Nada & Ahmed</div>
+                <div class="symbol">✧</div>
 
-    <div class="container">
-        <div class="arch-bg"></div>
-        <div class="content">
-            <div class="header-text">The Wedding Of</div>
-            <div class="names">Nada & Ahmed</div>
-            <div class="symbol" style="color:#d4af37; margin: 0.4em 0;">✧</div>
-            <div class="details">
-                Together with their families,<br>
-                they request the honor of your presence<br>
-                at their wedding celebration.
+                <div class="details">
+                    Together with their families,<br>
+                    they request the honor of your presence<br>
+                    at their wedding celebration.
+                </div>
+
+                <div class="date-section">
+                    OCTOBER 10, 2026
+                </div>
+
+                <div class="details">
+                    <strong style="color:#000;">THE GRAND PALACE HALL</strong><br>
+                    Cairo, Egypt <br>
+                    Ceremony begins at 7:00 PM
+                </div>
+
+                <a href="#" class="rsvp-btn">KINDLY RSVP</a>
             </div>
-            <div class="date-section">OCTOBER 10, 2026</div>
-            <div class="details">
-                <strong>THE GRAND PALACE HALL</strong><br>
-                Cairo, Egypt <br>
-                Ceremony begins at 7:00 PM
-            </div>
-            <a href="#" class="rsvp-btn">KINDLY RSVP</a>
         </div>
     </div>
 
