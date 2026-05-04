@@ -6,81 +6,131 @@
     <title>Bahy & Basma's Wedding</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Great+Vibes&family=Montserrat:wght@300&display=swap" rel="stylesheet">
     <style>
-        body {
+        /* --- GLOBAL RESET --- */
+        body, html {
             margin: 0;
             padding: 0;
-            background: #f4f1ea url('background_3.jpg') no-repeat center center fixed;
-            background-size: cover;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: 'Montserrat', sans-serif;
-            overflow-x: hidden;
-        }
-
-        .main-container {
             width: 100%;
-            display: flex;
-            justify-content: center;
-            padding: 40px 15px;
-            box-sizing: border-box;
+            min-height: 100vh;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f4f1ea;
         }
 
-        /* The reveal animation */
+        /* Shared Animations */
         @keyframes revealFrame {
-            0% { opacity: 0; transform: scale(0.92); }
+            0% { opacity: 0; transform: scale(0.95); }
             100% { opacity: 1; transform: scale(1); }
         }
 
-        .container {
-            position: relative;
-            width: 100%;
-            max-width: 450px;
-            aspect-ratio: 1 / 1.5; 
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            opacity: 0; 
-            
-            /* DEFAULT: 2s delay for when background is visible */
-            animation: revealFrame 2.5s ease-out 2s forwards;
+        /* --- 1. MOBILE VIEW HANDLING (Under 1200px) --- */
+        @media (max-width: 1199px) {
+            .desktop-view { display: none; } /* Completely isolate Desktop from DOM */
+
+            .mobile-view {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+                background: #f4f1ea url('background_3.jpg') no-repeat center center fixed;
+                background-size: cover;
+                padding: 40px 15px;
+                box-sizing: border-box;
+            }
+
+            .mobile-container {
+                position: relative;
+                width: 100%;
+                max-width: 450px;
+                aspect-ratio: 1 / 1.5; 
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                opacity: 0;
+                animation: revealFrame 2.5s ease-out 2s forwards;
+            }
+
+            /* The Original Arch Frame */
+            .mobile-arch-bg {
+                position: absolute;
+                top: 0; left: 0; width: 100%; height: 100%;
+                z-index: 1;
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 140' preserveAspectRatio='none'%3E%3Cpath d='M50 0 C55 10 70 10 85 20 C100 30 100 50 100 70 C100 90 100 110 85 120 C70 130 55 130 50 140 C45 130 30 130 15 120 C0 110 0 90 0 70 C0 50 0 30 15 20 C30 10 45 10 50 0 Z' fill='rgba(252, 250, 247, 0.98)' /%3E%3Cpath d='M50 3 C54 12 68 12 82 22 C96 32 97 50 97 70 C97 90 96 108 82 118 C68 128 54 128 50 137 C46 128 32 128 18 118 C4 108 3 90 3 70 C3 50 4 32 18 22 C32 12 46 12 50 3 Z' fill='none' stroke='%23d4af37' stroke-width='0.8' /%3E%3C/svg%3E");
+                background-size: 100% 100%;
+                background-repeat: no-repeat;
+            }
         }
 
-        /* DESKTOP ADJUSTMENTS: Background hidden, so remove delay */
+        /* --- 2. DESKTOP VIEW HANDLING (1200px and up) --- */
         @media (min-width: 1200px) {
-            body { 
-                background-image: none; 
-                background-color: #f4f1ea; 
+            .mobile-view { display: none; } /* Completely isolate Mobile from DOM */
+
+            .desktop-view {
+                display: flex; /* SPLIT FEATURE */
+                width: 100%;
+                height: 100vh;
             }
-            .container {
-                /* Animation starts immediately (0s delay) */
-                animation: revealFrame 2.5s ease-out 0s forwards;
+
+            /* Left Side: Image Only */
+            .desktop-left {
+                width: 50%;
+                background: url('background_3.jpg') no-repeat center center;
+                background-size: cover;
+            }
+
+            /* Right Side: New Invitation Layout */
+            .desktop-right {
+                width: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: #fcfaf7;
+            }
+
+            /* THE NEW DESKTOP FRAME (Rectangular Ornate Style) */
+            .desktop-container {
+                position: relative;
+                width: 450px;
+                height: 650px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                border: 1px solid #d4af37; /* Thin gold outer border */
+                background-color: white;
+                box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+                opacity: 0;
+                animation: revealFrame 2s ease-out forwards;
+            }
+
+            /* Decorative Inner Corner Frame for Desktop */
+            .desktop-container::before {
+                content: "";
+                position: absolute;
+                top: 15px; left: 15px; right: 15px; bottom: 15px;
+                border: 2px solid #d4af37;
+                clip-path: polygon(0 0, 15% 0, 15% 2%, 2% 2%, 2% 15%, 0 15%, 0 0, 
+                                   85% 0, 100% 0, 100% 15%, 98% 15%, 98% 2%, 85% 2%, 85% 0,
+                                   100% 85%, 100% 100%, 85% 100%, 85% 98%, 98% 98%, 98% 85%, 100% 85%,
+                                   15% 100%, 0 100%, 0 85%, 2% 85%, 2% 98%, 15% 98%, 15% 100%);
             }
         }
 
-        .arch-bg {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: 1;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 140' preserveAspectRatio='none'%3E%3Cpath d='M50 0 C55 10 70 10 85 20 C100 30 100 50 100 70 C100 90 100 110 85 120 C70 130 55 130 50 140 C45 130 30 130 15 120 C0 110 0 90 0 70 C0 50 0 30 15 20 C30 10 45 10 50 0 Z' fill='rgba(252, 250, 247, 0.98)' /%3E%3Cpath d='M50 3 C54 12 68 12 82 22 C96 32 97 50 97 70 C97 90 96 108 82 118 C68 128 54 128 50 137 C46 128 32 128 18 118 C4 108 3 90 3 70 C3 50 4 32 18 22 C32 12 46 12 50 3 Z' fill='none' stroke='%23d4af37' stroke-width='0.8' /%3E%3C/svg%3E");
-            background-size: 100% 100%;
-            background-repeat: no-repeat;
-        }
-
+        /* --- 3. SHARED TEXT STYLES --- */
+        /* Note: We use shared classes so the text looks consistent, 
+           but you can override them inside the media queries if needed. */
         .content {
             position: relative;
             z-index: 2;
             width: 80%;
-            padding: 20px 0;
         }
 
         .header-text {
             font-family: 'Cinzel', serif;
             letter-spacing: 0.3em;
-            font-size: clamp(0.6rem, 2.5vw, 0.8rem);
+            font-size: clamp(0.6rem, 1.2vw, 0.8rem);
             color: #888;
             text-transform: uppercase;
             margin-bottom: 0.5em;
@@ -88,20 +138,15 @@
 
         .names {
             font-family: 'Great Vibes', cursive;
-            font-size: clamp(2.2rem, 10vw, 3.5rem);
+            font-size: clamp(2.5rem, 4vw, 3.8rem);
             color: #d4af37;
             margin: 0.2em 0;
-            line-height: 1.1;
         }
 
-        .symbol { 
-            color: #d4af37; 
-            font-size: clamp(1rem, 4vw, 1.3rem); 
-            margin: 0.5em 0; 
-        }
+        .symbol { color: #d4af37; font-size: 1.2rem; margin: 0.5em 0; }
 
         .details {
-            font-size: clamp(0.65rem, 2.8vw, 0.85rem);
+            font-size: clamp(0.7rem, 1vw, 0.9rem);
             line-height: 1.6;
             color: #4a4a4a;
             margin: 0.8em 0;
@@ -112,9 +157,8 @@
             border-bottom: 1px solid #d4af37;
             padding: 0.6em 0;
             margin: 1.2em auto;
-            width: 85%;
             font-weight: bold;
-            font-size: clamp(0.8rem, 3.5vw, 1.1rem);
+            font-size: clamp(0.9rem, 1.5vw, 1.1rem);
             color: #333;
             letter-spacing: 0.15em;
         }
@@ -128,49 +172,46 @@
             text-decoration: none;
             font-family: 'Cinzel', serif;
             font-weight: 700;
-            font-size: clamp(0.7rem, 3vw, 0.9rem);
+            font-size: 0.8rem;
             letter-spacing: 0.1em;
-            border-radius: 2px;
-            transition: transform 0.2s ease;
+            transition: 0.3s ease;
         }
-
-        .rsvp-btn:active { transform: scale(0.95); }
-
-        @media (max-width: 400px) {
-            .container { aspect-ratio: 1 / 1.7; }
-            .content { width: 85%; }
-            .date-section { width: 90%; }
-        }
+        .rsvp-btn:hover { transform: scale(1.05); background-color: #b08d2e; }
     </style>
 </head>
 <body>
 
-    <div class="main-container">
-        <div class="container">
-            <div class="arch-bg"></div>
-            
+    <!-- SECTION 1: MOBILE LAYOUT -->
+    <div class="mobile-view">
+        <div class="mobile-container">
+            <div class="mobile-arch-bg"></div>
             <div class="content">
                 <div class="header-text">The Wedding Of</div>
                 <div class="names">Bahy & Basma</div>
                 <div class="symbol">✧</div>
-
-                <div class="details">
-                    Together with their families,<br>
-                    they request the honor of your presence<br>
-                    at their wedding celebration.
-                </div>
-
-                <div class="date-section">
-                    OCTOBER 10, 2026
-                </div>
-
-                <div class="details">
-                    <strong>THE GRAND PALACE HALL</strong><br>
-                    Cairo, Egypt <br>
-                    Ceremony begins at 7:00 PM
-                </div>
-
+                <div class="details">Together with their families, they request the honor of your presence.</div>
+                <div class="date-section">OCTOBER 10, 2026</div>
+                <div class="details"><strong>THE GRAND PALACE HALL</strong><br>Cairo, Egypt</div>
                 <a href="#" class="rsvp-btn">KINDLY RSVP</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 2: DESKTOP SPLIT LAYOUT -->
+    <div class="desktop-view">
+        <div class="desktop-left"></div> <!-- Background image here -->
+        
+        <div class="desktop-right"> <!-- Content side -->
+            <div class="desktop-container"> <!-- New Desktop-Only Frame -->
+                <div class="content">
+                    <div class="header-text">The Wedding Of</div>
+                    <div class="names">Bahy & Basma</div>
+                    <div class="symbol">✧</div>
+                    <div class="details">Together with their families, they request the honor of your presence.</div>
+                    <div class="date-section">OCTOBER 10, 2026</div>
+                    <div class="details"><strong>THE GRAND PALACE HALL</strong><br>Cairo, Egypt</div>
+                    <a href="#" class="rsvp-btn">KINDLY RSVP</a>
+                </div>
             </div>
         </div>
     </div>
