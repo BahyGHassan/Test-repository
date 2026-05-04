@@ -30,9 +30,7 @@
             animation: fadeIn 2s ease-in-out;
         }
 
-        /* The Main Arch Shape */
         .container {
-            background-color: rgba(252, 250, 247, 0.98);
             aspect-ratio: 1 / 1.4; 
             width: 95%;
             max-width: 440px;
@@ -43,8 +41,15 @@
             text-align: center;
             position: relative;
             padding: 40px 0;
-            
-            /* The Arch Mask */
+        }
+
+        /* THE SHAPE LAYER */
+        .container-bg {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: rgba(252, 250, 247, 0.98);
+            z-index: 1;
+            /* Arch Mask applied here instead of the parent */
             -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 140'%3E%3Cpath d='M50 0 C55 10 70 10 85 20 C100 30 100 50 100 70 C100 90 100 110 85 120 C70 130 55 130 50 140 C45 130 30 130 15 120 C0 110 0 90 0 70 C0 50 0 30 15 20 C30 10 45 10 50 0 Z'/%3E%3C/svg%3E");
             mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 140'%3E%3Cpath d='M50 0 C55 10 70 10 85 20 C100 30 100 50 100 70 C100 90 100 110 85 120 C70 130 55 130 50 140 C45 130 30 130 15 120 C0 110 0 90 0 70 C0 50 0 30 15 20 C30 10 45 10 50 0 Z'/%3E%3C/svg%3E");
             -webkit-mask-size: 100% 100%;
@@ -53,41 +58,28 @@
             mask-repeat: no-repeat;
         }
 
-        /* INNER STRIPE: Follows the whole frame */
-        .container::before {
-            content: "";
+        /* THE GOLD STRIPE LAYER */
+        .container-border {
             position: absolute;
             top: 10px; left: 10px; right: 10px; bottom: 10px;
             border: 1.5px solid #d4af37;
             pointer-events: none;
-            z-index: 1;
-
-            /* Apply the same arch mask so the border follows the curves */
-            -webkit-mask-image: inherit;
-            mask-image: inherit;
+            z-index: 2;
+            /* Mask applied to the border line itself */
+            -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 140'%3E%3Cpath d='M50 0 C55 10 70 10 85 20 C100 30 100 50 100 70 C100 90 100 110 85 120 C70 130 55 130 50 140 C45 130 30 130 15 120 C0 110 0 90 0 70 C0 50 0 30 15 20 C30 10 45 10 50 0 Z'/%3E%3C/svg%3E");
+            mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 140'%3E%3Cpath d='M50 0 C55 10 70 10 85 20 C100 30 100 50 100 70 C100 90 100 110 85 120 C70 130 55 130 50 140 C45 130 30 130 15 120 C0 110 0 90 0 70 C0 50 0 30 15 20 C30 10 45 10 50 0 Z'/%3E%3C/svg%3E");
             -webkit-mask-size: 100% 100%;
             mask-size: 100% 100%;
         }
 
-        /* OPTIONAL OUTER STRIPE (Very thin line near the very edge) */
-        .container::after {
-            content: "";
-            position: absolute;
-            top: 2px; left: 2px; right: 2px; bottom: 2px;
-            border: 0.5px solid rgba(212, 175, 55, 0.3);
-            pointer-events: none;
-            -webkit-mask-image: inherit;
-            mask-image: inherit;
-            -webkit-mask-size: 100% 100%;
-            mask-size: 100% 100%;
-        }
+        /* CONTENT STYLES */
+        .content { position: relative; z-index: 10; width: 100%; }
 
         .names {
             font-family: 'Great Vibes', cursive;
             font-size: 3rem;
             color: #d4af37;
             margin: 5px 0;
-            z-index: 2;
         }
 
         .header-text {
@@ -96,8 +88,6 @@
             font-size: 0.8rem;
             color: #888;
             text-transform: uppercase;
-            margin-top: 10px;
-            z-index: 2;
         }
 
         .details {
@@ -106,20 +96,18 @@
             color: #4a4a4a;
             margin: 8px 0;
             padding: 0 18%;
-            z-index: 2;
         }
 
         .date-section {
             border-top: 1px solid #d4af37;
             border-bottom: 1px solid #d4af37;
             padding: 8px 0;
-            margin: 15px 0;
+            margin: 15px auto;
             width: 60%;
             font-weight: bold;
             font-size: 1.1rem;
             color: #333;
             letter-spacing: 2px;
-            z-index: 2;
         }
 
         .rsvp-btn {
@@ -133,28 +121,19 @@
             font-weight: 700;
             font-size: 0.85rem;
             border-radius: 2px;
-            z-index: 3;
+            transition: 0.3s;
         }
 
-        .symbol { color: #d4af37; font-size: 1.2rem; margin: 5px 0; z-index: 2; }
+        .symbol { color: #d4af37; font-size: 1.2rem; margin: 5px 0; }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
         @media (max-width: 480px) {
-            .container { 
-                aspect-ratio: 1 / 1.6; 
-                padding: 60px 0; 
-            }
+            .container { aspect-ratio: 1 / 1.6; }
             .names { font-size: 2.3rem; }
-            .header-text { font-size: 0.65rem; }
             .details { font-size: 0.75rem; padding: 0 12%; }
             .date-section { width: 75%; font-size: 1rem; }
-            
-            /* Tighten border for mobile */
-            .container::before { top: 7px; left: 7px; right: 7px; bottom: 7px; }
+            .container-border { top: 7px; left: 7px; right: 7px; bottom: 7px; }
         }
     </style>
 </head>
@@ -162,28 +141,34 @@
 
     <div class="main-container">
         <div class="container">
-            <!-- No extra divs needed, the stripes are handled by CSS pseudo-elements -->
-            <div class="header-text">The Wedding Of</div>
-            <div class="names">Nada & Ahmed</div>
-            <div class="symbol">✧</div>
+            <!-- Layers -->
+            <div class="container-bg"></div>
+            <div class="container-border"></div>
+            
+            <!-- All content goes inside this relative div -->
+            <div class="content">
+                <div class="header-text">The Wedding Of</div>
+                <div class="names">Nada & Ahmed</div>
+                <div class="symbol">✧</div>
 
-            <div class="details">
-                Together with their families,<br>
-                they request the honor of your presence<br>
-                at their wedding celebration.
+                <div class="details">
+                    Together with their families,<br>
+                    they request the honor of your presence<br>
+                    at their wedding celebration.
+                </div>
+
+                <div class="date-section">
+                    OCTOBER 10, 2026
+                </div>
+
+                <div class="details">
+                    <strong>THE GRAND PALACE HALL</strong><br>
+                    Cairo, Egypt <br>
+                    Ceremony begins at 7:00 PM
+                </div>
+
+                <a href="YOUR_RSVP_LINK_HERE" class="rsvp-btn">KINDLY RSVP</a>
             </div>
-
-            <div class="date-section">
-                OCTOBER 10, 2026
-            </div>
-
-            <div class="details">
-                <strong>THE GRAND PALACE HALL</strong><br>
-                Cairo, Egypt <br>
-                Ceremony begins at 7:00 PM
-            </div>
-
-            <a href="YOUR_RSVP_LINK_HERE" class="rsvp-btn">KINDLY RSVP</a>
         </div>
     </div>
 
