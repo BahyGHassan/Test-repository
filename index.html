@@ -9,7 +9,6 @@
         body {
             margin: 0;
             padding: 0;
-            /* Using your verified background name */
             background: #f4f1ea url('background.jpg') no-repeat center center fixed;
             background-size: cover;
             min-height: 100vh;
@@ -19,7 +18,6 @@
             font-family: 'Montserrat', sans-serif;
         }
 
-        /* Responsive: Hide mosque background on screens larger than the image resolution (approx 1200px) */
         @media (min-width: 1200px) {
             body { background-image: none; background-color: #f4f1ea; }
         }
@@ -28,32 +26,42 @@
             width: 100%;
             display: flex;
             justify-content: center;
-            padding: 20px;
+            padding: 40px 20px;
             animation: fadeIn 2s ease-in-out;
         }
 
         /* 
-           The Scalloped Arch Frame from image_d2f71e.png 
-           Created with a detailed clip-path for that exact architectural shape.
+           THE FIXED FRAME:
+           Using a Mask-Image allows for perfect smooth curves and sharp points 
+           consistent with image_d2f71e.png.
         */
         .container {
-            background-color: rgba(252, 250, 247, 0.96);
-            padding: 80px 30px;
+            background-color: rgba(252, 250, 247, 0.98);
+            padding: 100px 40px;
             width: 90%;
-            max-width: 450px;
+            max-width: 460px;
             text-align: center;
             position: relative;
-            /* Precise architectural silhouette */
-            clip-path: polygon(50% 0%, 61% 3%, 74% 5%, 83% 11%, 91% 19%, 96% 29%, 100% 41%, 100% 60%, 96% 74%, 88% 85%, 78% 93%, 63% 97%, 50% 100%, 37% 97%, 22% 93%, 12% 85%, 4% 74%, 0% 60%, 0% 41%, 4% 29%, 9% 19%, 17% 11%, 26% 5%, 39% 3%);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            
+            /* High-fidelity architectural shape mask */
+            -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 130'%3E%3Cpath d='M50 0 C60 5 75 5 85 15 C95 25 100 40 100 65 C100 90 95 105 85 115 C75 125 60 125 50 130 C40 125 25 125 15 115 C5 105 0 90 0 65 C0 40 5 25 15 15 C25 5 40 5 50 0 Z'/%3E%3C/svg%3E");
+            mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 130'%3E%3Cpath d='M50 0 C60 5 75 5 85 15 C95 25 100 40 100 65 C100 90 95 105 85 115 C75 125 60 125 50 130 C40 125 25 125 15 115 C5 105 0 90 0 65 C0 40 5 25 15 15 C25 5 40 5 50 0 Z'/%3E%3C/svg%3E");
+            -webkit-mask-size: 100% 100%;
+            mask-size: 100% 100%;
+            -webkit-mask-repeat: no-repeat;
+            mask-repeat: no-repeat;
         }
 
-        /* Gold Ornate Border - Matches image_d2f71e.png double-line style */
-        .border-overlay {
+        /* Gold Ornate Double Border to match the reference image */
+        .container::before {
+            content: "";
             position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            border: 3px double #d4af37;
-            clip-path: inherit;
+            top: 10px; left: 10px; right: 10px; bottom: 10px;
+            border: 2px solid #d4af37;
+            -webkit-mask-image: inherit;
+            mask-image: inherit;
+            -webkit-mask-size: 100% 100%;
+            mask-size: 100% 100%;
             pointer-events: none;
         }
 
@@ -78,19 +86,19 @@
         }
 
         .details {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             line-height: 1.8;
             color: #4a4a4a;
-            margin: 15px 0;
+            margin: 10px 0;
         }
 
         .date-section {
             border-top: 1px solid #d4af37;
             border-bottom: 1px solid #d4af37;
-            padding: 12px 0;
-            margin: 20px 30px;
+            padding: 10px 0;
+            margin: 20px 40px;
             font-weight: bold;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: #333;
             letter-spacing: 1px;
         }
@@ -98,29 +106,28 @@
         .rsvp-btn {
             display: inline-block;
             margin-top: 25px;
-            padding: 16px 45px;
-            background-color: #c9a742; /* Precise gold from your screenshot */
+            padding: 15px 40px;
+            background-color: #c9a742; 
             color: white;
             text-decoration: none;
             font-family: 'Cinzel', serif;
             font-weight: 700;
-            font-size: 1rem;
+            font-size: 0.9rem;
             border-radius: 2px;
-            transition: all 0.4s ease;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
         .rsvp-btn:hover {
             background-color: #333;
             transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
         }
 
-        .symbol { color: #d4af37; font-size: 1.5rem; margin: 10px 0; }
+        .symbol { color: #d4af37; font-size: 1.2rem; margin: 10px 0; }
 
         @media (max-width: 480px) {
             .names { font-size: 2.8rem; }
-            .container { padding: 60px 20px; }
+            .container { padding: 80px 20px; }
         }
     </style>
 </head>
@@ -128,8 +135,6 @@
 
     <div class="main-container">
         <div class="container">
-            <div class="border-overlay"></div>
-            
             <div class="header-text">The Wedding Of</div>
             <div class="names">Nada & Ahmed</div>
             <div class="symbol">✧</div>
