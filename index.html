@@ -9,7 +9,9 @@
         body {
             margin: 0;
             padding: 0;
-            background: #f4f1ea;
+            /* Mosque background image */
+            background: #f4f1ea url('background.jpg') no-repeat center center fixed;
+            background-size: cover;
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -17,25 +19,34 @@
             font-family: 'Montserrat', sans-serif;
         }
 
-        /* Container that holds the frame image */
-        .invitation-frame {
+        .main-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /* The Ornate Frame (image_c7385c.png) */
+        .invitation-card {
             position: relative;
             width: 100%;
             max-width: 500px;
-            /* Match the aspect ratio of image_c73c96.jpg */
             aspect-ratio: 1 / 1.4; 
-            background: url('image_c73c96.jpg') no-repeat center center;
+            background: url('image_c7385c.png') no-repeat center center;
             background-size: contain;
             display: flex;
             justify-content: center;
             align-items: center;
+            /* Adds a lift effect over the mosque background */
+            filter: drop-shadow(0 15px 30px rgba(0,0,0,0.3));
         }
 
-        /* Content area centered specifically within the arch's white space */
+        /* Content area centered specifically within the white arch */
         .content {
             position: relative;
-            width: 60%; /* Keeps text inside the inner arch borders */
-            margin-top: 15%; /* Push text down to center it vertically in the arch opening */
+            width: 62%; 
+            margin-top: 12%; 
             text-align: center;
             z-index: 2;
         }
@@ -43,7 +54,7 @@
         .header-text {
             font-family: 'Cinzel', serif;
             letter-spacing: 0.2em;
-            font-size: clamp(0.6rem, 2vw, 0.75rem);
+            font-size: clamp(0.55rem, 2vw, 0.75rem);
             color: #7a634a;
             text-transform: uppercase;
             margin-bottom: 0.5em;
@@ -51,7 +62,7 @@
 
         .names {
             font-family: 'Great Vibes', cursive;
-            font-size: clamp(2rem, 8vw, 3rem);
+            font-size: clamp(1.8rem, 8vw, 2.8rem);
             color: #9e7a2e;
             margin: 0.2em 0;
             line-height: 1.1;
@@ -60,73 +71,77 @@
         .symbol { 
             color: #9e7a2e; 
             font-size: 1.2rem; 
-            margin: 0.4em 0; 
+            margin: 0.3em 0; 
         }
 
         .details {
-            font-size: clamp(0.65rem, 2.2vw, 0.8rem);
-            line-height: 1.6;
+            font-size: clamp(0.6rem, 2.2vw, 0.75rem);
+            line-height: 1.5;
             color: #333;
-            margin: 0.6em 0;
+            margin: 0.5em 0;
         }
 
         .date-section {
             border-top: 1px solid #9e7a2e;
             border-bottom: 1px solid #9e7a2e;
-            padding: 0.5em 0;
-            margin: 1em auto;
+            padding: 0.4em 0;
+            margin: 0.8em auto;
             width: 80%;
             font-weight: 600;
-            font-size: clamp(0.75rem, 3vw, 0.95rem);
+            font-size: clamp(0.7rem, 3vw, 0.9rem);
             color: #000;
             letter-spacing: 0.1em;
         }
 
         .rsvp-btn {
             display: inline-block;
-            margin-top: 1.2em;
+            margin-top: 1em;
             padding: 0.8em 2em;
             background-color: #9e7a2e; 
             color: white;
             text-decoration: none;
             font-family: 'Cinzel', serif;
             font-weight: 700;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             border-radius: 2px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: transform 0.2s ease;
         }
 
-        /* Responsive adjustment for small phones */
-        @media (max-width: 400px) {
-            .content { width: 70%; margin-top: 10%; }
+        .rsvp-btn:active { transform: scale(0.95); }
+
+        /* Small screen adjustments */
+        @media (max-width: 480px) {
+            .content { width: 70%; margin-top: 8%; }
         }
     </style>
 </head>
 <body>
 
-    <div class="invitation-frame">
-        <div class="content">
-            <div class="header-text">The Wedding Of</div>
-            <div class="names">Bahy & Basma</div>
-            <div class="symbol">✧</div>
+    <div class="main-container">
+        <div class="invitation-card">
+            <div class="content">
+                <div class="header-text">The Wedding Of</div>
+                <div class="names">Bahy & Basma</div>
+                <div class="symbol">✧</div>
 
-            <div class="details">
-                Together with their families,<br>
-                they request the honor of your presence<br>
-                at their wedding celebration.
+                <div class="details">
+                    Together with their families,<br>
+                    they request the honor of your presence<br>
+                    at their wedding celebration.
+                </div>
+
+                <div class="date-section">
+                    OCTOBER 10, 2026
+                </div>
+
+                <div class="details">
+                    <strong>THE GRAND PALACE HALL</strong><br>
+                    Cairo, Egypt <br>
+                    Ceremony begins at 7:00 PM
+                </div>
+
+                <a href="#" class="rsvp-btn">KINDLY RSVP</a>
             </div>
-
-            <div class="date-section">
-                OCTOBER 10, 2026
-            </div>
-
-            <div class="details">
-                <strong>THE GRAND PALACE HALL</strong><br>
-                Cairo, Egypt <br>
-                Ceremony begins at 7:00 PM
-            </div>
-
-            <a href="#" class="rsvp-btn">KINDLY RSVP</a>
         </div>
     </div>
 
