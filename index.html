@@ -19,10 +19,6 @@
             overflow-x: hidden;
         }
 
-        @media (min-width: 1200px) {
-            body { background-image: none; background-color: #f4f1ea; }
-        }
-
         .main-container {
             width: 100%;
             display: flex;
@@ -47,12 +43,22 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            
-            /* Hidden initially */
             opacity: 0; 
             
-            /* 2s delay to show background, 2.5s duration for the reveal */
+            /* DEFAULT: 2s delay for when background is visible */
             animation: revealFrame 2.5s ease-out 2s forwards;
+        }
+
+        /* DESKTOP ADJUSTMENTS: Background hidden, so remove delay */
+        @media (min-width: 1200px) {
+            body { 
+                background-image: none; 
+                background-color: #f4f1ea; 
+            }
+            .container {
+                /* Animation starts immediately (0s delay) */
+                animation: revealFrame 2.5s ease-out 0s forwards;
+            }
         }
 
         .arch-bg {
