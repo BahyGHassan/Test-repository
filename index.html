@@ -6,80 +6,136 @@
     <title>Nada & Ahmed - Our Wedding Celebration</title>
     <!-- Elegant Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Great+Vibes&family=Montserrat:wght@300&display=swap" rel="stylesheet">
-    <style>/* --- UPDATED RESPONSIVE CSS --- */
+    <style>
+        /* 
+           Crucial: This looks for the exact file name you uploaded.
+           Must be named "background.png" in your repository main folder.
+        */
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Parallax scrolling effect */
+            background-repeat: no-repeat;
+            color: #4a4a4a;
+            font-family: 'Montserrat', sans-serif;
+            text-align: center;
+            min-height: 100vh;
+        }
 
-body {
-    margin: 0;
-    padding: 0;
-    /* 
-       This property makes the background perfect.
-       "contain" ensures the entire mosque image is visible.
-    */
-    background-image: url('background.jpg'); /* Make sure this matches your filename */
-    background-size: contain;  /* The Magic Fix: Fits the entire image within the screen */
-    background-position: center bottom; /* Anchor to the bottom (floor) of the image */
-    background-attachment: scroll; /* Switched to scroll for better mobile performance */
-    background-repeat: no-repeat;
-    
-    /* Set a dark accent background if the image aspect ratio leaves empty space */
-    background-color: #fcfaf7; /* Matches the cream container color */
-    
-    color: #4a4a4a;
-    font-family: 'Montserrat', sans-serif;
-    text-align: center;
-    min-height: 100vh;
-}
+        /* Subtle Fade-In animation for the entire page load */
+        @keyframes fadeInPage {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
 
-.main-container {
-    animation: fadeInPage 2.5s ease-in-out;
-    padding: 50px 0;
-    display: flex;
-    justify-content: center;
-    align-items: center; /* Vercally centered box */
-    min-height: 100vh; /* Ensures main container takes up full height */
-}
+        /* Border zoom-in animation */
+        @keyframes borderGrow {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
 
-.container {
-    animation: borderGrow 1.5s ease-out;
-    background-color: rgba(252, 250, 247, 0.95); /* Slightly less transparent for readability against the full background */
-    padding: 60px 15px; /* Reduced padding slightly */
-    border: 2px solid #d4af37; /* Gold border */
-    margin: 20px;
-    max-width: 500px; /* Standardizing max-width for better display */
-    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-    border-radius: 4px; /* Optional slight rounded corner */
-}
+        .main-container {
+            animation: fadeInPage 2.5s ease-in-out; /* Page animation */
+            padding: 50px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 90vh;
+        }
 
-/* Updated names size for better responsive display */
-.names {
-    font-family: 'Great Vibes', cursive;
-    font-size: 3.5rem; /* Slightly smaller base font */
-    color: #d4af37;
-    margin-bottom: 5px;
-    transition: transform 0.3s ease;
-}
+        .container {
+            animation: borderGrow 1.5s ease-out; /* Border animation */
+            background-color: rgba(252, 250, 247, 0.9); /* Semi-transparent cream overlay for readability */
+            padding: 80px 20px;
+            border: 2px solid #d4af37; /* Gold border */
+            margin: 20px;
+            max-width: 600px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
 
-/* --- MOBILE SPECIFIC FIXES --- */
-@media (max-width: 600px) {
-    /* Anchors background specifically for vertical phone screens */
-    body {
-        background-position: center center;
-    }
-    
-    .names {
-        font-size: 2.8rem; /* Scales names text for mobile */
-    }
-    
-    .container {
-        padding: 40px 10px;
-        margin: 10px;
-    }
-    
-    .date {
-        font-size: 1.2rem;
-        padding: 8px 20px;
-    }
-}
+        .names {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4.5rem;
+            color: #d4af37;
+            margin-bottom: 5px;
+            transition: transform 0.3s ease; /* Hover effect animation */
+        }
+        
+        .names:hover {
+            transform: scale(1.05) rotate(-2deg); /* Dynamic hover */
+        }
+
+        .header-text {
+            font-family: 'Cinzel', serif;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: #6a6a6a;
+        }
+
+        .details {
+            font-size: 1rem;
+            line-height: 1.8;
+            margin: 30px 0;
+        }
+
+        .date {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: bold;
+            font-size: 1.4rem;
+            color: #333;
+            border-top: 1px solid #d4af37;
+            border-bottom: 1px solid #d4af37;
+            display: inline-block;
+            padding: 10px 30px;
+            margin: 15px 0;
+            letter-spacing: 2px;
+        }
+
+        .venue {
+            margin-top: 40px;
+            font-weight: 300;
+        }
+
+        .rsvp-btn {
+            display: inline-block;
+            margin-top: 50px;
+            padding: 18px 45px;
+            background-color: #d4af37;
+            color: white;
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            border-radius: 2px;
+            letter-spacing: 2px;
+            transition: all 0.4s ease; /* Smooth hover transition */
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Hover slide animation for the button */
+        .rsvp-btn:hover {
+            background-color: #333; /* Shifts color to match mosque architecture accents */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transform: translateY(-3px);
+        }
+
+        .decoration {
+            font-size: 2rem;
+            color: #d4af37;
+            margin: 15px 0;
+        }
+        
+        /* Mobile adjustment for large names font */
+        @media (max-width: 600px) {
+            .names { font-size: 3.2rem; }
+            .container { padding: 50px 15px; }
+        }
     </style>
 </head>
 <body>
